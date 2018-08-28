@@ -9,7 +9,6 @@ import { RefreshGuard } from "./refresh-guard.service";
 import { InspDtlFormSavePopupComponent } from './insp-dtl-form-save-popup/insp-dtl-form-save-popup.component';
 import { ModalModule } from "ngx-bootstrap/modal";
 import { TabIndexModule } from '../../shared/TabIndexModule/tabIndex.module';
-import { DeviceCameraComponent } from '../file-upload-component/device-camera/device-camera.component';
 
 @NgModule({
   imports: [
@@ -19,7 +18,7 @@ import { DeviceCameraComponent } from '../file-upload-component/device-camera/de
     TabIndexModule,
     ModalModule.forRoot()
   ],
-  declarations: [InspectionDtlFormComponent, FileUploadComponentComponent, InspDtlFormSavePopupComponent, DeviceCameraComponent],
+  declarations: [InspectionDtlFormComponent, FileUploadComponentComponent, InspDtlFormSavePopupComponent],
   providers: [FileUploadService, RefreshGuard],
   exports: []
 })

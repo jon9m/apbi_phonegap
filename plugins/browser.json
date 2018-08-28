@@ -12,6 +12,9 @@
     },
     "cordova-plugin-camera": {
       "PACKAGE_NAME": "au.com.seoinstitute.apbi.inspectorapp"
+    },
+    "cordova-plugin-file": {
+      "PACKAGE_NAME": "au.com.seoinstitute.apbi.inspectorapp"
     }
   },
   "dependent_plugins": {}

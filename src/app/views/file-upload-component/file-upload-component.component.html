@@ -1,6 +1,8 @@
 <span class="btn btn-success fileinput-button"><i class="glyphicon glyphicon-plus"></i><span>Select file...</span>
-<input type="file" (change)="onFileChange($event)" (click)="resetAll($event)" accept="image/*" capture="camera" multiple/>
-</span><br><br>
+  <input type="file" (change)="onFileChange($event)" (click)="resetAll($event)" accept="image/*" capture="camera" multiple/>
+</span>
+<span style="display: inline-block;"><button (click)="takePhoto()" type="button" class="btn btn-outline-success"><i class="fa fa-camera"></i></button></span>
+<br><br>
 <div class="progress mb-1">
   <div class="progress-bar progress-bar-success" [style.width.%]="uploadProgress" [style.background-color]="rgbString">
     <div *ngIf="uploadProgress > 0" class="font-weight-bold">{{uploadProgress}}%</div>
@@ -9,4 +11,3 @@
 <div class="files">
   <img id="{{progress+'-'+index}}" src="" alt="your image" height="160px;" #imgPreview/>
 </div>
-<app-device-camera></app-device-camera>

@@ -3,14 +3,12 @@ import { FormGroup, FormArray, AbstractControl } from "@angular/forms";
 import { FileUploadService } from "../../shared/fileupload.service";
 import { HttpEventType } from "@angular/common/http";
 import { AppGlobal } from '../../shared/app-global';
-import { Ng2ImgMaxService } from 'ng2-img-max';
 import { Subscription } from "rxjs/Subscription";
 import { FileUploadProgressService } from "../../shared/fileupload-progress.service";
-import { Ng2PicaService } from 'ng2-pica';
-
-
-
 import * as Compress from 'Compress.js';
+
+declare var navigator: any;
+declare var window: any;
 
 @Component({
   selector: 'app-file-upload-component',
@@ -54,7 +52,7 @@ export class FileUploadComponentComponent implements OnInit, OnDestroy {
 
   currInputElemProgress: any;
 
-  constructor(private fileUploadService: FileUploadService, private ng2ImgMax: Ng2ImgMaxService, private fileUploadProgressService: FileUploadProgressService, private ng2PicaService: Ng2PicaService) {
+  constructor(private fileUploadService: FileUploadService, private fileUploadProgressService: FileUploadProgressService) {
 
   }
 
@@ -85,12 +83,12 @@ export class FileUploadComponentComponent implements OnInit, OnDestroy {
     let bookingId = this.inspectiondetailsform.get('bookingid').value;
     let submittedData = { 'index': this.index, 'type': this.recommendationType, 'bookingid': bookingId };
     let reader = new FileReader();
-    if (event.target.files && event.target.files.length > 0) {
+    if (event.target.files && event.target.files.length > 0) { 
       let fileToUpload = event.target.files[0];
       reader.readAsDataURL(fileToUpload);
       reader.onload = (event) => {
         let progressId = "#" + this.progress + "-" + this.index;
-        let elem = (<HTMLImageElement>document.querySelector(progressId));
+        let elem: any = (<HTMLImageElement>document.querySelector(progressId));
         if (elem) {
           elem.src = (<FileReader>event.target).result;
         }
@@ -118,8 +116,12 @@ export class FileUploadComponentComponent implements OnInit, OnDestroy {
           const file = Compress.convertBase64ToFile(base64str, imgExt)
           this.uploadCurrentFile(file, submittedData);
         }).catch(err => {
-            console.log('Image resizing failed, using original image', err);
-            this.uploadCurrentFile(fileToUpload, submittedData);
+          console.log('Image resizing failed, using original image', err);
+
+
+          console.log(submittedData);
+
+          this.uploadCurrentFile(fileToUpload, submittedData);
         });
 
         // this.ng2PicaService.resize([fileToUpload], AppGlobal.UPLOAD_IMG_WIDTH, AppGlobal.UPLOAD_IMG_HEIGHT, true).subscribe(
@@ -187,7 +189,7 @@ export class FileUploadComponentComponent implements OnInit, OnDestroy {
       event => {
         this.handleProgress(event, this.index, this.recommendationType);
       },
-      error => {
+      () => {
         this.fileUploadProgressService.setUploadError(this.file_name, true);
       });
   }
@@ -263,4 +265,51 @@ export class FileUploadComponentComponent implements OnInit, OnDestroy {
 
     this.rgbString = "#" + strR + strG + strB;
   }
+
+  // Camera ------------------------------------------------------------------
+
+  takePhoto() {
+    if (navigator.camera) {
+      navigator.camera.getPicture(this.onPhotoDataSuccess, this.onFail, {
+        quality: 50,
+        destinationType: navigator.camera.DestinationType.FILE_URI
+      });
+    }
+  }
+
+  onFail = (message) => {
+    alert('Failed because: ' + message);
+  }
+
+  onPhotoDataSuccess = (imageData) => {
+    let eventObj = {
+      target: {
+        files: []
+      }
+    }
+
+    // let progressId = "#" + this.progress + "-" + this.index;
+    // let elem: any = (<HTMLImageElement>document.querySelector(progressId));
+    // if (elem) {
+    //   elem.src = imageData;
+    // }
+
+
+    window.resolveLocalFileSystemURL(imageData, (entry) => {
+
+      console.log(JSON.stringify(entry));
+
+      entry.file((file) => {
+        eventObj.target.files[0] = (file);
+          this.onFileChange(eventObj);
+      },
+        (err) => console.log(err)
+      );
+    });
+
+
+  }
+
+
+
 }
