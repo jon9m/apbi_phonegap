@@ -7,16 +7,12 @@
     <feature name="Camera">
         <param name="android-package" value="org.apache.cordova.camera.CameraLauncher" />
     </feature>
-    <feature name="SplashScreen">
-        <param name="android-package" value="org.apache.cordova.splashscreen.SplashScreen" />
-        <param name="onload" value="true" />
-    </feature>
-    <name>APBI Inspector</name>
+    <name>APBIInspector</name>
     <description>
-        Australian Property &amp; Building inspection
+        A sample Apache Cordova application that responds to the deviceready event.
     </description>
-    <author email="info@seoinstitute.com.au" href="http://seoinstitute.com.au">
-        SEO Institute of Australia
+    <author email="dev@cordova.apache.org" href="http://cordova.io">
+        Apache Cordova Team
     </author>
     <content src="index.html" />
     <access origin="*" />
@@ -27,17 +23,5 @@
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
     <allow-intent href="market:*" />
-    <icon density="ldpi" src="res/icon/android/icon.png" />
-    <icon density="mdpi" src="res/icon/android/icon.png" />
-    <icon density="hdpi" src="res/icon/android/icon.png" />
-    <icon density="xhdpi" src="res/icon/android/icon.png" />
-    <splash density="land-hdpi" src="res/screen/android/icon.png" />
-    <splash density="land-ldpi" src="res/screen/android/icon.png" />
-    <splash density="land-mdpi" src="res/screen/android/icon.png" />
-    <splash density="land-xhdpi" src="res/screen/android/icon.png" />
-    <splash density="port-hdpi" src="res/screen/android/icon.png" />
-    <splash density="port-ldpi" src="res/screen/android/icon.png" />
-    <splash density="port-mdpi" src="res/screen/android/icon.png" />
-    <splash density="port-xhdpi" src="res/screen/android/icon.png" />
     <preference name="loglevel" value="DEBUG" />
 </widget>

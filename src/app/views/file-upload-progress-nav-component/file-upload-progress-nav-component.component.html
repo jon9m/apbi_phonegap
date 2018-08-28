@@ -1,0 +1,27 @@
+<div *ngIf="getDisplayed()" class="fileuploadstats">
+  <ul class="progressnavul">
+    <li *ngFor="let fileInfo of fileUploadProgressService.getValues()" class="progressnavli" (click)="scrollToPosition(fileInfo.fileId)">
+      <div>
+        <span>{{fileInfo.realName}}</span>&nbsp;
+        <span class="pull-right">{{fileInfo.progress}}%</span>
+      </div>
+      <div>
+        <ng-template [ngIf]="fileInfo.isError==true" [ngIfElse]="errElseBlock">
+          <span class="text-danger">Upload failed! Please try again.</span>
+        </ng-template>
+        <ng-template #errElseBlock>
+          <span *ngIf="fileInfo.isImageResizing">Resizing...</span>
+          <span *ngIf="fileInfo.progress > 0 && fileInfo.progress != 100">Uploading...</span>
+          <span *ngIf="fileInfo.progress==100">Uploaded</span>
+        </ng-template>
+      </div>
+      <div class="progress progressnavdivpropress">
+        <div class="progress-bar progress-bar-success" [style.width.%]="fileInfo.progress" [style.background-color]="fileInfo.progressColor">
+        </div>
+      </div>
+      <div class="progressnavdivcheck">
+        <i *ngIf="fileInfo.progress==100" class="fa fa-check progressnavdivcheckli"></i>
+      </div>
+    </li>
+  </ul>
+</div>

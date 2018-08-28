@@ -1,0 +1,119 @@
+// Here you can add other styles
+
+
+.custom-radio {  cursor: pointer; display: block; margin: 0 0 1px; padding: 13px 0 0 50px; position: relative; }
+
+.custom-radio input[type="radio"] { display: none; }
+
+.custom-radio span.radio { background: #fff; border: solid 2px #b5b5b5; border-radius: 50%; cursor: pointer; display: block; height: 40px; left: 0; margin: 0px; left: 0; position: absolute; top: 3px; width: 40px; }
+
+.custom-radio span.radio:after { border-radius: 50%; content: ""; height: 70%; left:0; position: absolute; top:0; bottom:0; right:0; margin:auto; transform: scale(2); -webkit-transform: scale(2); opacity: 0; transition: all 0.3s ease-in; -webkit-transition: all 0.3s ease-in; -moz-transition: all 0.3s ease-in; width: 70%; }
+
+.custom-radio input[type='radio']:checked + span.radio:after { border-color: #85878a; background: #85878a; transform: scale(1); -webkit-transform: scale(1); opacity: 1; }
+
+.custom-radio input[type='radio']:disabled + span.radio, .custom-checkbox input[type='checkbox']:disabled + span.checkbox { cursor: not-allowed; opacity: 0.5 }
+
+.custom-radio input[type='radio']:disabled + span.radio:after { transform: scale(1); -webkit-transform: scale(1); opacity: 0.5; }
+
+.custom-checkbox { cursor: pointer; display:block; font-size: 16px; line-height: 26px; margin: 0 0 20px; padding: 10px 0 0 50px; position: relative; }
+
+.custom-checkbox input[type="checkbox"] { display: none; }
+
+.custom-checkbox span.checkbox { background-color: #fff; border: solid 2px #cccccc; border-radius:0%; cursor: pointer; display: block; height: 45px; margin: 0px; position: absolute; left: 0; top: 0px; width: 45px;transform: scale(1.2); }
+
+.custom-checkbox input[type='checkbox']:checked + span.checkbox { background: #f3a321; border-color: #f3a321; text-align:center; }
+
+.custom-checkbox input[type='checkbox']:checked + span.checkbox:before { content:"\f00c"; color:#fff; font: normal normal normal 40px/1 FontAwesome;}
+.table-body-cell{
+height:50px !important;
+}
+.table-body-cell .custom-checkbox{
+margin: 20px 0 20px !important;
+}
+.fc-day-grid-event > .fc-content {
+    color: #fff;
+    white-space: normal;
+}
+.fileinput-button {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+.fileinput-button input {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  opacity: 0;
+  -ms-filter: 'alpha(opacity=0)';
+  filter: 'alpha(opacity=0)';
+  font-size: 200px !important;
+  direction: ltr;
+  cursor: pointer;
+}
+
+/* Fixes for IE < 8 */
+@media screen\9 {
+  .fileinput-button input {
+    filter: alpha(opacity=0);
+    font-size: 100%;
+    height: 100%;
+  }
+}
+
+// ovrerides
+.app-body .main {
+  background-color: #fff;
+}
+
+a:not([href]):not([tabindex]) {
+  text-decoration: none;
+}
+
+.app-footer{
+  background-color: #fff;
+  border-top: 0px;
+}
+
+.fileuploadstats {
+  padding: 5px;
+  -webkit-flex: 1; /* Safari 6.1+ */
+  -ms-flex: 1; /* IE 10 */
+  flex: 2.5;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.navbar-brand{
+  pointer-events: none;
+}
+
+.breadcrumb{
+  padding: 0.5rem 1rem;
+}
+
+.breadcrumb-menu{
+  height: 1.6rem;
+}
+
+.breadcrumb-item{
+  line-height: 1.5rem;
+}
+
+.breadcrumb-item a{
+  pointer-events: none;
+  color: #73818f;
+}
+
+.breadcrumb-fixed{
+  position: fixed;
+  z-index: 300;
+}
+
+#pagecontentview{
+  margin-top: 60px;
+}
+
+.indextab{
+  margin-left:auto;
+}

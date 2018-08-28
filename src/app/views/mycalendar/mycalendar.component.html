@@ -1,0 +1,18 @@
+<i *ngIf="isCalendarLoading" style="position:absolute;display:block;top: 50%;left: 50%;font-size:50px;color:#0073b7" class="fa fa-spinner fa-spin"></i>
+
+<div *ngIf="calendarOptions">
+  <ng-fullcalendar 
+      #ucCalendar [options]="calendarOptions" 
+      (eventClick)="eventClick($event)" 
+      (eventDrop)="updateEvent($event)"
+      (eventResize)="updateEvent($event)" 
+      (clickButton)="clickButton($event)"
+      [(eventsModel)]="events">
+    </ng-fullcalendar>
+</div>
+
+<app-inspection-dtl-popup></app-inspection-dtl-popup>
+
+<!--<div *ngIf="calendarOptions">
+    <ng-fullcalendar #ucCalendar [options]="calendarOptions" [(eventsModel)]="events"></ng-fullcalendar>
+</div>-->

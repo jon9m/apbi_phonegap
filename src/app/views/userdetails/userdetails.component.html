@@ -1,0 +1,9 @@
+<div *ngIf="loginResponse && getDisplayed()" id="profile">
+  <div>
+    <img src="{{avatarURL}}{{loginResponse.userId}}" alt="" title="" width="150px" style="margin:25px;">
+  </div>
+  <div class="text-center" style="width:100%;margin:0px;padding:0px;">
+    <h4>{{loginResponse.name}}</h4>
+    <small>{{loginResponse.role}}</small>
+  </div>
+</div>

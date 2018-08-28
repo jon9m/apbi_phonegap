@@ -1,0 +1,4 @@
+<select class="tabindex form-control form-control-sm" (change)="onSelectTab($event)">
+  <option value="-">Jump to ...</option>
+  <option *ngFor="let t of currTabs; let i=index;" value="{{ i }}">{{ t.tabIndexItem }}</option>
+</select>

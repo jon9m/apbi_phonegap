@@ -8,6 +8,10 @@
         "source": "/Users/vutuan/manoj/PHONEGAP_CLI/APBIInspector/platforms/android/app/src/main/res/drawable-port-xhdpi/screen.png"
     },
     {
+        "merged": "/Users/vutuan/manoj/PHONEGAP_CLI/APBIInspector/platforms/android/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi_icon.png.flat",
+        "source": "/Users/vutuan/manoj/PHONEGAP_CLI/APBIInspector/platforms/android/app/src/main/res/mipmap-xxxhdpi/icon.png"
+    },
+    {
         "merged": "/Users/vutuan/manoj/PHONEGAP_CLI/APBIInspector/platforms/android/app/build/intermediates/res/merged/debug/drawable-land-xhdpi_screen.png.flat",
         "source": "/Users/vutuan/manoj/PHONEGAP_CLI/APBIInspector/platforms/android/app/src/main/res/drawable-land-xhdpi/screen.png"
     },
@@ -20,12 +24,24 @@
         "source": "/Users/vutuan/manoj/PHONEGAP_CLI/APBIInspector/platforms/android/app/src/main/res/drawable-land-ldpi/screen.png"
     },
     {
+        "merged": "/Users/vutuan/manoj/PHONEGAP_CLI/APBIInspector/platforms/android/app/build/intermediates/res/merged/debug/drawable-land-xxxhdpi_screen.png.flat",
+        "source": "/Users/vutuan/manoj/PHONEGAP_CLI/APBIInspector/platforms/android/app/src/main/res/drawable-land-xxxhdpi/screen.png"
+    },
+    {
         "merged": "/Users/vutuan/manoj/PHONEGAP_CLI/APBIInspector/platforms/android/app/build/intermediates/res/merged/debug/drawable-port-mdpi_screen.png.flat",
         "source": "/Users/vutuan/manoj/PHONEGAP_CLI/APBIInspector/platforms/android/app/src/main/res/drawable-port-mdpi/screen.png"
     },
     {
+        "merged": "/Users/vutuan/manoj/PHONEGAP_CLI/APBIInspector/platforms/android/app/build/intermediates/res/merged/debug/drawable-port-xxhdpi_screen.png.flat",
+        "source": "/Users/vutuan/manoj/PHONEGAP_CLI/APBIInspector/platforms/android/app/src/main/res/drawable-port-xxhdpi/screen.png"
+    },
+    {
         "merged": "/Users/vutuan/manoj/PHONEGAP_CLI/APBIInspector/platforms/android/app/build/intermediates/res/merged/debug/drawable-land-mdpi_screen.png.flat",
         "source": "/Users/vutuan/manoj/PHONEGAP_CLI/APBIInspector/platforms/android/app/src/main/res/drawable-land-mdpi/screen.png"
+    },
+    {
+        "merged": "/Users/vutuan/manoj/PHONEGAP_CLI/APBIInspector/platforms/android/app/build/intermediates/res/merged/debug/mipmap-xxhdpi_icon.png.flat",
+        "source": "/Users/vutuan/manoj/PHONEGAP_CLI/APBIInspector/platforms/android/app/src/main/res/mipmap-xxhdpi/icon.png"
     },
     {
         "merged": "/Users/vutuan/manoj/PHONEGAP_CLI/APBIInspector/platforms/android/app/build/intermediates/res/merged/debug/drawable-port-ldpi_screen.png.flat",
@@ -44,6 +60,10 @@
         "source": "/Users/vutuan/manoj/PHONEGAP_CLI/APBIInspector/platforms/android/app/src/main/res/xml/config.xml"
     },
     {
+        "merged": "/Users/vutuan/manoj/PHONEGAP_CLI/APBIInspector/platforms/android/app/build/intermediates/res/merged/debug/drawable-land-xxhdpi_screen.png.flat",
+        "source": "/Users/vutuan/manoj/PHONEGAP_CLI/APBIInspector/platforms/android/app/src/main/res/drawable-land-xxhdpi/screen.png"
+    },
+    {
         "merged": "/Users/vutuan/manoj/PHONEGAP_CLI/APBIInspector/platforms/android/app/build/intermediates/res/merged/debug/xml_camera_provider_paths.xml.flat",
         "source": "/Users/vutuan/manoj/PHONEGAP_CLI/APBIInspector/platforms/android/app/src/main/res/xml/camera_provider_paths.xml"
     },
@@ -54,5 +74,9 @@
     {
         "merged": "/Users/vutuan/manoj/PHONEGAP_CLI/APBIInspector/platforms/android/app/build/intermediates/res/merged/debug/mipmap-xhdpi_icon.png.flat",
         "source": "/Users/vutuan/manoj/PHONEGAP_CLI/APBIInspector/platforms/android/app/src/main/res/mipmap-xhdpi/icon.png"
+    },
+    {
+        "merged": "/Users/vutuan/manoj/PHONEGAP_CLI/APBIInspector/platforms/android/app/build/intermediates/res/merged/debug/drawable-port-xxxhdpi_screen.png.flat",
+        "source": "/Users/vutuan/manoj/PHONEGAP_CLI/APBIInspector/platforms/android/app/src/main/res/drawable-port-xxxhdpi/screen.png"
     }
 ]

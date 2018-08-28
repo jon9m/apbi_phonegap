@@ -1,0 +1,26 @@
+<div bsModal #largeModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-primary" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Update conflict</h4>
+        <button type="button" class="close" (click)="largeModal.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>A newer version of this report is available on the server. Do you want to force save the current form?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="saveForm()">Save changes</button>
+        <button type="button" [disabled]="isFormLoading" class="btn btn-primary" (click)="reloadForm()"><i *ngIf="isFormLoading" class="fa fa-spinner fa-spin"></i>&nbsp;Reload</button>
+        <button type="button" #forcesaveclosebutton class="btn btn-secondary" (click)="largeModal.hide()">Close</button>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+<button id="forceSaveWarningButton" style="display:none;" type="button" class="btn btn-secondary" data-toggle="modal" (click)="largeModal.show()">
+  m
+</button>
