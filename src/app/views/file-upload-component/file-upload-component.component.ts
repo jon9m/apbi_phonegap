@@ -9,6 +9,7 @@ import * as Compress from 'Compress.js';
 
 declare var navigator: any;
 declare var window: any;
+declare var cordova :any;
 
 @Component({
   selector: 'app-file-upload-component',
@@ -83,8 +84,13 @@ export class FileUploadComponentComponent implements OnInit, OnDestroy {
     let bookingId = this.inspectiondetailsform.get('bookingid').value;
     let submittedData = { 'index': this.index, 'type': this.recommendationType, 'bookingid': bookingId };
     let reader = new FileReader();
-    if (event.target.files && event.target.files.length > 0) { 
+    if (event.target.files && event.target.files.length > 0) {
       let fileToUpload = event.target.files[0];
+
+      console.log("fileToUpload " + JSON.stringify(fileToUpload));
+      console.log("fileToUpload2 " + typeof fileToUpload);
+      console.dir("fileToUpload3 " + fileToUpload);
+
       reader.readAsDataURL(fileToUpload);
       reader.onload = (event) => {
         let progressId = "#" + this.progress + "-" + this.index;
@@ -185,6 +191,8 @@ export class FileUploadComponentComponent implements OnInit, OnDestroy {
     this.fileUploadProgressService.setResizeState(this.file_name, false);
     this.fileUploadProgressService.setUploadError(this.file_name, false);
 
+    console.log(this.file_name);
+
     this.fileUploadSub = this.fileUploadService.fileUpload(fileToUpload, this.file_name, submittedData).subscribe(
       event => {
         this.handleProgress(event, this.index, this.recommendationType);
@@ -268,48 +276,75 @@ export class FileUploadComponentComponent implements OnInit, OnDestroy {
 
   // Camera ------------------------------------------------------------------
 
-  takePhoto() {
-    if (navigator.camera) {
-      navigator.camera.getPicture(this.onPhotoDataSuccess, this.onFail, {
-        quality: 50,
-        destinationType: navigator.camera.DestinationType.FILE_URI
-      });
+  setOptions = () => {
+    var options = {
+      // Some common settings are 20, 50, and 100
+      quality: 50,
+      destinationType: navigator.camera.DestinationType.FILE_URI,
+      // In this app, dynamically set the picture source, Camera or photo gallery
+      sourceType: navigator.camera.PictureSourceType.SAVEDPHOTOALBUM,
+      encodingType: navigator.camera.EncodingType.JPEG,
+      mediaType: navigator.camera.MediaType.PICTURE,
+      allowEdit: false,
+      correctOrientation: true  //Corrects Android orientation quirks
     }
+    return options;
   }
 
-  onFail = (message) => {
-    alert('Failed because: ' + message);
-  }
+  takePhoto(){
+    var options = {
+      limit: 1
+   };
+   navigator.device.capture.captureImage(onSuccess, onError, options);
 
-  onPhotoDataSuccess = (imageData) => {
-    let eventObj = {
-      target: {
-        files: []
+   function onSuccess(mediaFiles) {
+      var i, path, len;
+      for (i = 0, len = mediaFiles.length; i < len; i += 1) {
+         path = mediaFiles[i].fullPath;
+         console.log(mediaFiles);
       }
-    }
+   }
 
-    // let progressId = "#" + this.progress + "-" + this.index;
-    // let elem: any = (<HTMLImageElement>document.querySelector(progressId));
-    // if (elem) {
-    //   elem.src = imageData;
-    // }
-
-
-    window.resolveLocalFileSystemURL(imageData, (entry) => {
-
-      console.log(JSON.stringify(entry));
-
-      entry.file((file) => {
-        eventObj.target.files[0] = (file);
-          this.onFileChange(eventObj);
-      },
-        (err) => console.log(err)
-      );
-    });
-
-
+   function onError(error) {
+      navigator.notification.alert('Error code: ' + error.code, null, 'Capture Error');
+   }
   }
 
+  // takePhoto() {
 
+  //   if (navigator.camera) {
+  //     var options = this.setOptions();
+  //     navigator.camera.getPicture(this.onPhotoDataSuccess, this.onFail, options);
+  //   }
+  // }
+  // onFail = (message) => {
+  //   alert('Failed because: ' + message);
+  // }
 
+  // onPhotoDataSuccess = (imageUri) => {
+  //   let eventObj = {
+  //     target: {
+  //       files: []
+  //     }
+  //   }
+  //   console.log("imageUri " + JSON.stringify(imageUri));
+
+  //   eventObj.target.files[0] = (imageUri);
+  //   this.onFileChange(eventObj);
+
+  //   // window.resolveLocalFileSystemURL(imageUri, (entry) => {
+  //   //   entry.file((file) => {
+  //   //     eventObj.target.files[0] = (file);
+  //   //     this.onFileChange(eventObj);
+  //   //   },
+  //   //     (err) => console.log(err)
+  //   //   );
+  //   // });
+
+  //   // let progressId = "#" + this.progress + "-" + this.index;
+  //   // let elem: any = (<HTMLImageElement>document.querySelector(progressId));
+  //   // if (elem) {
+  //   //   elem.src = imageUri;
+  //   // }
+  // }
 }

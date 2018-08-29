@@ -15,6 +15,9 @@
     },
     "cordova-plugin-file": {
       "PACKAGE_NAME": "au.com.seoinstitute.apbi.inspectorapp"
+    },
+    "cordova-plugin-media-capture": {
+      "PACKAGE_NAME": "au.com.seoinstitute.apbi.inspectorapp"
     }
   },
   "dependent_plugins": {}

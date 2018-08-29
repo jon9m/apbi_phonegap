@@ -7,13 +7,16 @@
     "files": {}
   },
   "installed_plugins": {
-    "cordova-plugin-whitelist": {
-      "PACKAGE_NAME": "au.com.seoinstitute.apbi.inspectorapp"
-    },
     "cordova-plugin-camera": {
       "PACKAGE_NAME": "au.com.seoinstitute.apbi.inspectorapp"
     },
     "cordova-plugin-file": {
+      "PACKAGE_NAME": "au.com.seoinstitute.apbi.inspectorapp"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "au.com.seoinstitute.apbi.inspectorapp"
+    },
+    "cordova-plugin-media-capture": {
       "PACKAGE_NAME": "au.com.seoinstitute.apbi.inspectorapp"
     }
   },
