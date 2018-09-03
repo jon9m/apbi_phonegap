@@ -247,6 +247,13 @@ export class FileUploadComponentComponent implements OnInit, OnDestroy {
     return options;
   }
 
+  hasCamera() {
+    if (navigator.camera) {
+      return true;
+    }
+    return false;
+  }
+
   takePhoto() {
     if (navigator.camera) {
       var options = this.setOptions();

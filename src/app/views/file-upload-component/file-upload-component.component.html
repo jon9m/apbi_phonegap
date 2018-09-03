@@ -1,7 +1,7 @@
 <span class="btn btn-success fileinput-button"><i class="glyphicon glyphicon-plus"></i><span>Select file...</span>
   <input type="file" (change)="onFileChange($event)" (click)="resetAll($event)" accept="image/*" capture="camera" multiple/>
 </span>
-<span style="display: inline-block;"><button (click)="takePhoto()" type="button" class="btn btn-outline-success"><i class="fa fa-camera"></i></button></span>
+<span *ngIf="hasCamera()" style="display: inline-block;"><button (click)="takePhoto()" type="button" class="btn btn-outline-success"><i class="fa fa-camera"></i></button></span>
 <br><br>
 <div class="progress mb-1">
   <div class="progress-bar progress-bar-success" [style.width.%]="uploadProgress" [style.background-color]="rgbString">
