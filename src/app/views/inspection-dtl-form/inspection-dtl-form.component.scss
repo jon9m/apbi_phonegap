@@ -14,7 +14,7 @@ h1, h2, h3, h4, h5, h6, p {
 }
 .page-header {
 	vertical-align: middle;
-	margin: 15px 0;
+	// margin: 15px 0;
 	padding: 0;
 	border-bottom: none;
 }
@@ -750,4 +750,15 @@ border-bottom: 1px solid black;
 }
 .black{
 	color: #000;
+}
+
+.completebtn {
+	float: left;
+}
+.formbuttons {
+	height: 37px;
+}
+
+.cardheaderbg{
+	background-color: #f0f3f5;
 }

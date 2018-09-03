@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ViewChildren, QueryList, AfterViewInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChildren, QueryList, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { FormGroup, FormControl, FormArray, FormBuilder } from "@angular/forms";
 import { InspectionDetailsService } from "../../shared/inspection-detail.service";
 import { Router, ActivatedRoute } from "@angular/router";
@@ -1977,5 +1977,11 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
 
   onCloseMsg() {
     this.formSaveMsg = '';
+  }
+
+  @ViewChild('inspDtlFieldSet') inspDtlFieldSet: ElementRef;
+  onFormComplete() {
+    console.log('onFormComplete');
+    this.inspDtlFieldSet.nativeElement.disabled = !this.inspDtlFieldSet.nativeElement.disabled;
   }
 }
