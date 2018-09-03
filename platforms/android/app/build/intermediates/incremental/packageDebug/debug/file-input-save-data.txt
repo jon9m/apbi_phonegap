@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Mon Sep 03 11:28:10 AEST 2018
+#Mon Sep 03 12:33:30 AEST 2018
 76.base=/Users/vutuan/manoj/PHONEGAP_CLI/APBIInspector/platforms/android/app/build/intermediates/assets/debug
 5.base=/Users/vutuan/manoj/PHONEGAP_CLI/APBIInspector/platforms/android/app/build/intermediates/assets/debug
 42.base=/Users/vutuan/manoj/PHONEGAP_CLI/APBIInspector/platforms/android/app/build/intermediates/assets/debug
