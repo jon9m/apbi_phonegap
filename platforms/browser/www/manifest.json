@@ -4,8 +4,8 @@
   "name": "APBIInspector",
   "short_name": "APBIInspector",
   "version": "au.com.seoinstitute.apbi.inspectorapp",
-  "description": "A sample Apache Cordova application that responds to the deviceready event.",
-  "author": "Apache Cordova Team",
+  "description": "SEO Institute of Australia",
+  "author": "SEO Institute of Australia",
   "icons": [],
   "start_url": "index.html"
 }
