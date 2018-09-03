@@ -239,7 +239,10 @@ export class FileUploadComponentComponent implements OnInit, OnDestroy {
       encodingType: navigator.camera.EncodingType.JPEG,
       mediaType: navigator.camera.MediaType.PICTURE,
       allowEdit: false,
-      correctOrientation: true  //Corrects Android orientation quirks
+      correctOrientation: true,  //Corrects Android orientation quirks
+
+      targetHeight:1920,
+      targetWidth:800
     }
     return options;
   }
