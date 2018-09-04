@@ -1,24 +1,24 @@
 <div bsModal #detailsModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
-      <div class="modal-header">
+      <div class="modal-header modal-header-thin">
         <button type="button" class="close" (click)="detailsModal.hide()" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body p-0" id="inspectiondtlcontent" style="min-height: 250px;">
-        <div class="col-xs-12 bg-primary p-3">
+        <div class="col-xs-12 bg-primary px-3 py-2">
           <h3>Inspection Details</h3>
           <div></div>        
         </div>
-        <div class="col-xs-12 bg-info p-3">
+        <div class="col-xs-12 bg-info px-3 py-2">
           <h3>Client Details</h3>
           <div></div>
         </div>
       </div>
-      <div class="modal-footer">
-        <input id="previewbookingid" type="hidden" name="previewbookingid" value=""/>
+      <div class="modal-footer modal-footer-thin">
         <button type="button" #modalclosebutton class="btn btn-outline-primary mr-auto float-left" (click)="detailsModal.hide();isFormLoading=false;">Cancel</button>
+        <input id="previewbookingid" type="hidden" name="previewbookingid" value=""/>
         <button type="button" [disabled]="isFormLoading" class="btn btn-outline-info" (click)="loadForm()"><i *ngIf="isFormLoading" class="fa fa-spinner fa-spin"></i>&nbsp;Complete the report form</button>
       </div>
     </div>
