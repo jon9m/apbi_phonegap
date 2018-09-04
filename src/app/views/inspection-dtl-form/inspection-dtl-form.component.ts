@@ -76,6 +76,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
   addReportSub: Subscription;
 
   private formVersionSubscription: Subscription;
+  private formCompleteSubscription: Subscription;
 
   insp_type_pre_purchase_building_inspection;
   insp_type_pre_sale_building_inspection;
@@ -145,6 +146,10 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
       this.onSave(status.isSaveExit, status.isQuickSave);
     });
 
+    this.formCompleteSubscription = this.inspectionDetailsService.formCompleteSubject.subscribe(status => {
+      this.formComplete(status);
+    });
+
     this.sub = this.route.params.subscribe(params => {
       this.id = +params['id']; // (+) converts string 'id' to a number
 
@@ -209,6 +214,9 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
     }
     if (this.formVersionSubscription != null) {
       this.formVersionSubscription.unsubscribe();
+    }
+    if (this.formCompleteSubscription != null) {
+      this.formCompleteSubscription.unsubscribe();
     }
 
     this.fileUploadProgressService.clearMap();
@@ -1979,9 +1987,16 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
     this.formSaveMsg = '';
   }
 
-  @ViewChild('inspDtlFieldSet') inspDtlFieldSet: ElementRef;
+  //Complete Form
   onFormComplete() {
     console.log('onFormComplete');
+    let element: HTMLElement = document.getElementById('completeReportWarningButton') as HTMLElement;
+    element.click();
+  }
+
+  @ViewChild('inspDtlFieldSet') inspDtlFieldSet: ElementRef;
+  formComplete(status) {
+    console.log('formComplete');
     this.inspDtlFieldSet.nativeElement.disabled = !this.inspDtlFieldSet.nativeElement.disabled;
   }
 }

@@ -9,6 +9,7 @@ import { RefreshGuard } from "./refresh-guard.service";
 import { InspDtlFormSavePopupComponent } from './insp-dtl-form-save-popup/insp-dtl-form-save-popup.component';
 import { ModalModule } from "ngx-bootstrap/modal";
 import { TabIndexModule } from '../../shared/TabIndexModule/tabIndex.module';
+import { InspDtlFormCompletePopupComponent } from './insp-dtl-form-complete-popup/insp-dtl-form-complete-popup.component';
 
 @NgModule({
   imports: [
@@ -18,7 +19,7 @@ import { TabIndexModule } from '../../shared/TabIndexModule/tabIndex.module';
     TabIndexModule,
     ModalModule.forRoot()
   ],
-  declarations: [InspectionDtlFormComponent, FileUploadComponentComponent, InspDtlFormSavePopupComponent],
+  declarations: [InspectionDtlFormComponent, FileUploadComponentComponent, InspDtlFormSavePopupComponent, InspDtlFormCompletePopupComponent],
   providers: [FileUploadService, RefreshGuard],
   exports: []
 })
