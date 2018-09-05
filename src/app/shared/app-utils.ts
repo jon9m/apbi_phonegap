@@ -65,4 +65,49 @@ export class AppUtils {
             }
         }
     }
+
+    public static moveToPosition(srcElem, destid) {
+        var destElem = <HTMLElement>document.querySelector('#' + destid);
+
+        var posSrc = this.findPos(srcElem);
+        var posSrcPx = (Number(posSrc[0]) + 160) + 'px';
+
+        //Styles
+        this.addStyleToDestination(destElem, posSrcPx);
+
+        console.log('moveToPosition');
+    }
+
+    public static addStyleToDestination(destElem, posSrcPx) {
+        destElem.style.position = 'absolute';
+        destElem.style.zIndex = '1000';
+        destElem.style.backgroundColor = 'pink';
+        destElem.style.top = posSrcPx;
+
+        destElem.style.left = '50%';
+
+        let offsetWidthHalf: number = destElem.offsetWidth / 2;
+        offsetWidthHalf = Number(offsetWidthHalf.toFixed(0));
+        offsetWidthHalf = offsetWidthHalf * -1;
+        destElem.style.marginLeft = offsetWidthHalf + 'px';
+    }
+
+    public static removeStyleFromDestination(destElem) {
+        destElem.style.position = 'unset';
+        destElem.style.zIndex = 'auto';
+        destElem.style.backgroundColor = 'inherit';
+        destElem.style.top = 'auto';
+        destElem.style.left = 'auto';
+        destElem.style.marginLeft = 'auto';
+    }
+
+    public static findPos(obj) {
+        var curtop = -100;
+        if (obj && obj.offsetParent) {
+            do {
+                curtop += obj.offsetTop;
+            } while (obj = obj.offsetParent);
+            return [curtop];
+        }
+    }
 }

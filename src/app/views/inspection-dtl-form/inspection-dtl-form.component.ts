@@ -160,6 +160,9 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
 
       console.log("reportId " + this.reportId);
       console.log("reportType " + this.reportType);
+      
+      //TODO
+      this.reportType = 11;
 
       //Initialize the form
       this.initForm();
@@ -1999,4 +2002,11 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
     console.log('formComplete');
     this.inspDtlFieldSet.nativeElement.disabled = !this.inspDtlFieldSet.nativeElement.disabled;
   }
+
+  //Show Recommendations
+  showRecommendations(event) {
+    console.log('showRecommendations');
+    AppUtils.moveToPosition(event.target, 'external-11'); //TODO - pass id - external-11
+  }
+
 }
