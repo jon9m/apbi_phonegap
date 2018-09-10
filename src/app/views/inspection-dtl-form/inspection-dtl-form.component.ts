@@ -95,6 +95,8 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
   recommQuickAddMode: boolean = false;
   recommQuickAddCurrentCheckItem: { id: '', recType: '', recDetails: '' };
 
+  popupOverlay: boolean = false;
+
   @ViewChildren(TabIndexDirective) tabs: QueryList<TabIndexDirective>;
 
   ngAfterViewInit(): void {
@@ -1809,13 +1811,23 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
     let fileName = 'rec-file-' + typeeLower + '-' + len;
     let itemValue = this.getRecommendationItemValue(recommendationType);
 
+    let recType = '-';
+    let recDetails = '-';
+    let isquickitem = false;
+    if (this.recommQuickAddMode) {
+      recType = this.recommQuickAddCurrentCheckItem.recType;
+      recDetails = this.recommQuickAddCurrentCheckItem.recDetails;
+      isquickitem = true;
+    }
+
     (<FormArray>this.inspectiondetailsform.get(recommendationType)).push(new FormGroup({
       'item': new FormControl(itemValue),
-      'rectype': new FormControl('-'),
-      'recdetail': new FormControl('-'),
+      'rectype': new FormControl(recType),
+      'recdetail': new FormControl(recDetails),
       'comment': new FormControl(''),
       'typee': new FormControl(typee),
-      'filename': new FormControl(fileName)
+      'filename': new FormControl(fileName),
+      'isquickitem': new FormControl(isquickitem)
     }));
   }
 
@@ -1831,7 +1843,8 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
       'recdetail': new FormControl(recDetail),
       'comment': new FormControl(''),
       'typee': new FormControl(typee),
-      'filename': new FormControl(fileName)
+      'filename': new FormControl(fileName),
+      'isquickitem': new FormControl(true)
     }));
   }
 
@@ -2023,22 +2036,38 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
 
   //Show Recommendations
   showRecommendations(event, recommId, id, itemType, itemValue, recommType, typee) {
-    this.recommQuickAddMode = true;
     this.recommQuickAddCurrentCheckItem = { id: id, recType: itemValue, recDetails: itemType };
     console.log(this.recommQuickAddCurrentCheckItem);
 
+    //If already checked
+    let currSetItem = this.inspectiondetailsform.get(this.recommQuickAddCurrentCheckItem.id);
+    if (currSetItem && currSetItem.value === true) {
+      this.recommQuickAddMode = false;
+      // currSetItem.setValue(false);
+      //TODO - prompt to remove recommendations
+      return;
+    } else {
+      this.recommQuickAddMode = true;
+    }
+
+    this.showPopupOverlay();
     this.onAddRecommendationsQuick(recommType, typee, this.recommQuickAddCurrentCheckItem.recType, this.recommQuickAddCurrentCheckItem.recDetails);
 
-    AppUtils.moveToPosition(event.target, recommId);
+    setTimeout(() => {
+      AppUtils.moveToPosition(event.target, recommId);
+    }, 0);
   }
 
   onRecommQuickViewCancel(recommId) {
     this.recommQuickAddMode = false;
 
-    let recomms: NodeListOf<HTMLElement> = document.querySelectorAll('.closequickadded');
-    for (let i = 0; i < recomms.length; i++) {
-      if (recomms[i]) {
-        recomms[i].click();
+    let recommList = document.querySelector('#' + recommId);
+    if (recommList) {
+      let recomms: NodeListOf<HTMLElement> = recommList.querySelectorAll('.closequickadded');
+      for (let i = recomms.length - 1; i >= 0; i--) {
+        if (recomms[i]) {
+          recomms[i].click();
+        }
       }
     }
 
@@ -2049,11 +2078,22 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
 
     this.recommQuickAddCurrentCheckItem = null;
     AppUtils.resetPosition(recommId);
+
+    this.hidePopupOverlay();
   }
 
   onRecommQuickViewOk(recommId) {
     this.recommQuickAddMode = false;
     this.recommQuickAddCurrentCheckItem = null;
     AppUtils.resetPosition(recommId);
+    this.hidePopupOverlay();
+  }
+
+  showPopupOverlay() {
+    this.popupOverlay = true;
+  }
+
+  hidePopupOverlay() {
+    this.popupOverlay = false;
   }
 }

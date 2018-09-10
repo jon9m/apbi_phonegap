@@ -2983,7 +2983,7 @@
               <div formArrayName="lockup_recommendations_list">
                 <div class="card" *ngFor="let recomm of getRecommendationControls(inspectiondetailsform, 'lockup_recommendations_list'); let i=index;" [formGroupName]="i">
                   <div class="card-body">
-                    <div class="pull-right"><a data-toggle="tooltip" title="" class="btn btn-default" data-original-title="Remove this recommendation" [ngClass]="recommQuickAddMode ? 'closequickadded' : ''"
+                    <div class="pull-right"><a data-toggle="tooltip" title="" class="btn btn-default" data-original-title="Remove this recommendation" [ngClass]="(recomm.value.isquickitem) ? 'closequickadded' : ''"
                         (click)="onDeleteRecommendations($event, 'lockup_recommendations_list', i)"><i class="fa fa-times"></i></a></div>
                     <div class="row">
                       <div class="col-sm-12">
@@ -3026,6 +3026,7 @@
                             <app-file-upload-component (uploadCompletedEmitter)="onUploadComplete($event)" [index]="i" [reportId]="reportId" [recommendationType]="'lockup_recommendations_list'" [progress]="'rec-file-preview-lockup'" [inspectiondetailsform]="inspectiondetailsform"></app-file-upload-component>                      
                             <input type="hidden" formControlName="typee"/>
                             <input type="hidden" formControlName="filename"/>
+                            <input type="hidden" formControlName="isquickitem"/>
                           </div>
                         </div>
                       </div>
@@ -10106,6 +10107,7 @@
   </form>
 </fieldset>
 
+<div *ngIf="popupOverlay" class="modal-backdrop fade in show" style="z-index: 900"></div>
 
 <app-insp-dtl-form-save-popup></app-insp-dtl-form-save-popup>
 <app-insp-dtl-form-complete-popup></app-insp-dtl-form-complete-popup>

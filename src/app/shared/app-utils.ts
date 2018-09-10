@@ -87,9 +87,7 @@ export class AppUtils {
     public static addStyleToDestination(destElem, posSrcPx) {
         destElem.style.position = 'absolute';
         destElem.style.zIndex = '1000';
-        destElem.style.backgroundColor = '#21a8d7';
         destElem.style.top = posSrcPx;
-
         destElem.style.left = '50%';
 
         let offsetWidthHalf: number = destElem.offsetWidth / 2;
@@ -101,7 +99,6 @@ export class AppUtils {
     public static removeStyleFromDestination(destElem) {
         destElem.style.position = 'unset';
         destElem.style.zIndex = 'auto';
-        destElem.style.backgroundColor = 'inherit';
         destElem.style.top = 'auto';
         destElem.style.left = 'auto';
         destElem.style.marginLeft = 'auto';
