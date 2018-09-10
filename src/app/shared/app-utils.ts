@@ -72,16 +72,22 @@ export class AppUtils {
         var posSrc = this.findPos(srcElem);
         var posSrcPx = (Number(posSrc[0]) + 160) + 'px';
 
-        //Styles
+        //styles
         this.addStyleToDestination(destElem, posSrcPx);
-
-        console.log('moveToPosition');
     }
+
+    public static resetPosition(destid) {
+        var destElem = <HTMLElement>document.querySelector('#' + destid);
+
+        //reset styles
+        this.removeStyleFromDestination(destElem);
+    }
+
 
     public static addStyleToDestination(destElem, posSrcPx) {
         destElem.style.position = 'absolute';
         destElem.style.zIndex = '1000';
-        destElem.style.backgroundColor = 'pink';
+        destElem.style.backgroundColor = '#21a8d7';
         destElem.style.top = posSrcPx;
 
         destElem.style.left = '50%';

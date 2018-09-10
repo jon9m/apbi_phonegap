@@ -92,20 +92,22 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
   insp_type_new_building_inspection_completion_stage;
   insp_type_new_building_inspection_4_stages_package;
 
+  recommQuickAddMode: boolean = false;
+  recommQuickAddCurrentCheckItem: { id: '', recType: '', recDetails: '' };
 
-  @ViewChildren(TabIndexDirective) tabs : QueryList<TabIndexDirective>;
+  @ViewChildren(TabIndexDirective) tabs: QueryList<TabIndexDirective>;
 
   ngAfterViewInit(): void {
     this.appServeiceLoadStatusService.setTabQueryList(this.tabs);
-    AppUtils.breadcrumbWidthHandler(true, false);    
+    AppUtils.breadcrumbWidthHandler(true, false);
   }
 
-  constructor(private route: ActivatedRoute, 
-    private fb: FormBuilder, 
-    private inspectionDetailsService: InspectionDetailsService, 
-    private router: Router, private httpService: HTTPService, 
-    private fileUploadProgressService: FileUploadProgressService, 
-    private appServeiceLoadStatusService :AppServeiceLoadStatusService) {
+  constructor(private route: ActivatedRoute,
+    private fb: FormBuilder,
+    private inspectionDetailsService: InspectionDetailsService,
+    private router: Router, private httpService: HTTPService,
+    private fileUploadProgressService: FileUploadProgressService,
+    private appServeiceLoadStatusService: AppServeiceLoadStatusService) {
 
   }
 
@@ -160,7 +162,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
 
       console.log("reportId " + this.reportId);
       console.log("reportType " + this.reportType);
-      
+
       //TODO
       this.reportType = 11;
 
@@ -1817,6 +1819,22 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
     }));
   }
 
+  onAddRecommendationsQuick(recommendationType, typee, recType, recDetail) {
+    let len = new Date().getTime();
+    let typeeLower = (<string>typee).toLowerCase();
+    let fileName = 'rec-file-' + typeeLower + '-' + len;
+    let itemValue = this.getRecommendationItemValue(recommendationType);
+
+    (<FormArray>this.inspectiondetailsform.get(recommendationType)).push(new FormGroup({
+      'item': new FormControl(itemValue),
+      'rectype': new FormControl(recType),
+      'recdetail': new FormControl(recDetail),
+      'comment': new FormControl(''),
+      'typee': new FormControl(typee),
+      'filename': new FormControl(fileName)
+    }));
+  }
+
   getRecommendationItemValue(recommendationType: string) {
     let item = '-';
     if (recommendationType != null) {
@@ -1937,7 +1955,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
 
           this.showForceSaveWindow();
         } else {
-          this.inspectiondetailsform.patchValue({'fversion' : response['fversion']});
+          this.inspectiondetailsform.patchValue({ 'fversion': response['fversion'] });
 
           this.formSaveMsg = response['message'];
           this.formSaveMsgType = response['type'];
@@ -2004,9 +2022,38 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
   }
 
   //Show Recommendations
-  showRecommendations(event) {
-    console.log('showRecommendations');
-    AppUtils.moveToPosition(event.target, 'external-11'); //TODO - pass id - external-11
+  showRecommendations(event, recommId, id, itemType, itemValue, recommType, typee) {
+    this.recommQuickAddMode = true;
+    this.recommQuickAddCurrentCheckItem = { id: id, recType: itemValue, recDetails: itemType };
+    console.log(this.recommQuickAddCurrentCheckItem);
+
+    this.onAddRecommendationsQuick(recommType, typee, this.recommQuickAddCurrentCheckItem.recType, this.recommQuickAddCurrentCheckItem.recDetails);
+
+    AppUtils.moveToPosition(event.target, recommId);
   }
 
+  onRecommQuickViewCancel(recommId) {
+    this.recommQuickAddMode = false;
+
+    let recomms: NodeListOf<HTMLElement> = document.querySelectorAll('.closequickadded');
+    for (let i = 0; i < recomms.length; i++) {
+      if (recomms[i]) {
+        recomms[i].click();
+      }
+    }
+
+    let currSetItem = this.inspectiondetailsform.get(this.recommQuickAddCurrentCheckItem.id);
+    if (currSetItem) {
+      currSetItem.setValue(false);
+    }
+
+    this.recommQuickAddCurrentCheckItem = null;
+    AppUtils.resetPosition(recommId);
+  }
+
+  onRecommQuickViewOk(recommId) {
+    this.recommQuickAddMode = false;
+    this.recommQuickAddCurrentCheckItem = null;
+    AppUtils.resetPosition(recommId);
+  }
 }
