@@ -2045,6 +2045,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
       this.recommQuickAddMode = false;
       // currSetItem.setValue(false);
       //TODO - prompt to remove recommendations
+      this.removeRecommendationsFromCurrentList(recommId);
       return;
     } else {
       this.recommQuickAddMode = true;
@@ -2122,10 +2123,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
     return false;
   }
 
-  onRecommQuickViewCancel(recommId) {
-    this.recommQuickAddMode = false;
-
-    //TODO - need to remove ??
+  removeRecommendationsFromCurrentList(recommId) {
     let recommList = document.querySelector('#' + recommId);
     if (recommList) {
       let recomms: NodeListOf<HTMLElement> = recommList.querySelectorAll('.closequickadded');
@@ -2135,6 +2133,13 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
         }
       }
     }
+  }
+
+  onRecommQuickViewCancel(recommId) {
+    this.recommQuickAddMode = false;
+
+    //TODO - need to remove ??
+    this.removeRecommendationsFromCurrentList(recommId);
 
     let currSetItem = this.inspectiondetailsform.get(this.recommQuickAddCurrentCheckItem.id);
     if (currSetItem) {
