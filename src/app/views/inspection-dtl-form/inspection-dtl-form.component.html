@@ -2770,13 +2770,13 @@
                     <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1049" value="1"/><span class="checkbox"></span></label>
                   </div>
                   <div class="table-body-cell">
-                    <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1050" value="1"/><span class="checkbox" (click)="showRecommendations($event, 'external-11', '1050', 'Roof', 'General Advice on Item', 'lockup_recommendations_list','Lockup')"></span></label>
+                    <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1050" value="1"/><span class="checkbox" (click)="showRecommendations($event, 'external-11','external', '1050', 'Roof', 'General Advice on Item', 'lockup_recommendations_list','Lockup')"></span></label>
                   </div>
                   <div class="table-body-cell">
-                    <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1051" value="1"/><span class="checkbox" (click)="showRecommendations($event, 'external-11', '1051', 'Roof', 'Repair Recommended', 'lockup_recommendations_list','Lockup')"></span></label>
+                    <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1051" value="1"/><span class="checkbox" (click)="showRecommendations($event, 'external-11','external', '1051', 'Roof', 'Repair Recommended', 'lockup_recommendations_list','Lockup')"></span></label>
                   </div>
                   <div class="table-body-cell">
-                    <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1052" value="1"/><span class="checkbox" (click)="showRecommendations($event, 'external-11', '1052', 'Roof', 'Major Structural Defect', 'lockup_recommendations_list','Lockup')"></span></label>
+                    <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1052" value="1"/><span class="checkbox" (click)="showRecommendations($event, 'external-11','external', '1052', 'Roof', 'Major Structural Defect', 'lockup_recommendations_list','Lockup')"></span></label>
                   </div>
                   <div class="table-body-cell">
                     <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1053" value="1"/><span class="checkbox"></span></label>
@@ -2793,13 +2793,13 @@
                     <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1055" value="1"/><span class="checkbox"></span></label>
                   </div>
                   <div class="table-body-cell">
-                    <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1056" value="1"/><span class="checkbox" (click)="showRecommendations($event, 'external-11')"></span></label>
+                    <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1056" value="1"/><span class="checkbox" (click)="showRecommendations($event, 'external-11','external', '1056', 'External Walls', 'General Advice on Item', 'lockup_recommendations_list','Lockup')"></span></label>
                   </div>
                   <div class="table-body-cell">
-                    <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1057" value="1"/><span class="checkbox"></span></label>
+                    <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1057" value="1"/><span class="checkbox" (click)="showRecommendations($event, 'external-11','external', '1057', 'External Walls', 'Repair Recommended', 'lockup_recommendations_list','Lockup')"></span></label>
                   </div>
                   <div class="table-body-cell">
-                    <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1058" value="1"/><span class="checkbox"></span></label>
+                    <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1058" value="1"/><span class="checkbox" (click)="showRecommendations($event, 'external-11','external', '1058', 'External Walls', 'Major Structural Defect', 'lockup_recommendations_list','Lockup')"></span></label>
                   </div>
                   <div class="table-body-cell">
                     <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1059" value="1"/><span class="checkbox"></span></label>
@@ -2981,9 +2981,9 @@
           <div class="card-body">
             <div id="recomendations-14">
               <div formArrayName="lockup_recommendations_list">
-                <div class="card" *ngFor="let recomm of getRecommendationControls(inspectiondetailsform, 'lockup_recommendations_list'); let i=index;" [formGroupName]="i">
+                <div class="card" *ngFor="let recomm of getRecommendationControls(inspectiondetailsform, 'lockup_recommendations_list'); let i=index;" [formGroupName]="i" [style.display]="displayCurrRecommendation(recomm) ? 'block' : 'none'">
                   <div class="card-body">
-                    <div class="pull-right"><a data-toggle="tooltip" title="" class="btn btn-default" data-original-title="Remove this recommendation" [ngClass]="(recomm.value.isquickitem) ? 'closequickadded' : ''"
+                    <div class="pull-right"><a data-toggle="tooltip" title="" class="btn btn-default" data-original-title="Remove this recommendation" [ngClass]="(recomm.value.isquickitem) ? [getKeyForRecommendationObject(recomm), 'closequickadded'] : ''"
                         (click)="onDeleteRecommendations($event, 'lockup_recommendations_list', i)"><i class="fa fa-times"></i></a></div>
                     <div class="row">
                       <div class="col-sm-12">

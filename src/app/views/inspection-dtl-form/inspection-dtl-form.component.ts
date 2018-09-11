@@ -93,7 +93,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
   insp_type_new_building_inspection_4_stages_package;
 
   recommQuickAddMode: boolean = false;
-  recommQuickAddCurrentCheckItem: { id: '', recType: '', recDetails: '' };
+  recommQuickAddCurrentCheckItem: { id: '', recType: '', recommType_short: '', recDetails: '', recommType: '', typee: '' };
 
   popupOverlay: boolean = false;
 
@@ -2035,8 +2035,8 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
   }
 
   //Show Recommendations
-  showRecommendations(event, recommId, id, itemType, itemValue, recommType, typee) {
-    this.recommQuickAddCurrentCheckItem = { id: id, recType: itemValue, recDetails: itemType };
+  showRecommendations(event, recommId, recommType_short, id, itemType, itemValue, recommType, typee) {
+    this.recommQuickAddCurrentCheckItem = { id: id, recType: itemValue, recommType_short: recommType_short, recDetails: itemType, recommType: recommType, typee: typee };
     console.log(this.recommQuickAddCurrentCheckItem);
 
     //If already checked
@@ -2051,21 +2051,86 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
     }
 
     this.showPopupOverlay();
-    this.onAddRecommendationsQuick(recommType, typee, this.recommQuickAddCurrentCheckItem.recType, this.recommQuickAddCurrentCheckItem.recDetails);
+    if (!this.hasRecommendationAddedForItem(recommId)) {
+      this.onAddRecommendationsQuick(recommType, typee, this.recommQuickAddCurrentCheckItem.recType, this.recommQuickAddCurrentCheckItem.recDetails);
+    }
 
     setTimeout(() => {
       AppUtils.moveToPosition(event.target, recommId);
     }, 0);
   }
 
+  getKeyForRecommendationObject(recommObj) {
+    let key = null;
+    if (recommObj && recommObj.value) {
+      key = recommObj.value.typee + "_" + recommObj.value.item + "_" + recommObj.value.recdetail + "_" + recommObj.value.rectype;
+      if (key) {
+        key = key.replace(/\s+/g, '');
+        key = key.toLowerCase();
+      }
+    }
+    console.log(key);
+    return key;
+  }
+
+  getKeyForCurrentRecommendationSelected() {
+    let key = null;
+    let reccommUcrrentItem = this.recommQuickAddCurrentCheckItem;
+    if (reccommUcrrentItem) {
+      key = reccommUcrrentItem.typee + "_" + reccommUcrrentItem.recommType_short + "_" + reccommUcrrentItem.recDetails + "_" + reccommUcrrentItem.recType;
+      if (key) {
+        key = key.replace(/\s+/g, '');
+        key = key.toLowerCase();
+      }
+    }
+    console.log(key);
+    return key;
+  }
+
+  displayCurrRecommendation(recommObj) {
+    //[style.display]="(!recommQuickAddMode || (recomm.value.isquickitem)) ? 'block' : 'none'"
+
+    let reccomKey = null;
+    let currRecommKey = null;
+
+    reccomKey = this.getKeyForRecommendationObject(recommObj);
+
+    currRecommKey = this.getKeyForCurrentRecommendationSelected();
+
+    if (this.recommQuickAddMode) {
+      if ((currRecommKey != null) && (reccomKey != null) && (currRecommKey === reccomKey)) {
+        return true;
+      } else {
+        return false;
+      }
+    } else {
+      return true;
+    }
+  }
+
+  hasRecommendationAddedForItem(recommId) {
+    let recommList = document.querySelector('#' + recommId);
+    if (recommList) {
+      let currKey = this.getKeyForCurrentRecommendationSelected();
+      let recomms: NodeListOf<HTMLElement> = recommList.querySelectorAll('.closequickadded');
+      for (let i = recomms.length - 1; i >= 0; i--) {
+        if ((recomms[i]) && recomms[i].classList.contains(currKey)) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+
   onRecommQuickViewCancel(recommId) {
     this.recommQuickAddMode = false;
 
+    //TODO - need to remove ??
     let recommList = document.querySelector('#' + recommId);
     if (recommList) {
       let recomms: NodeListOf<HTMLElement> = recommList.querySelectorAll('.closequickadded');
       for (let i = recomms.length - 1; i >= 0; i--) {
-        if (recomms[i]) {
+        if ((recomms[i]) && recomms[i].classList.contains(this.getKeyForCurrentRecommendationSelected())) {
           recomms[i].click();
         }
       }
