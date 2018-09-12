@@ -166,7 +166,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
       console.log("reportType " + this.reportType);
 
       //TODO
-      //this.reportType = 11;
+      // this.reportType = 11;
 
       //Initialize the form
       this.initForm();
@@ -2102,14 +2102,18 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
     return key;
   }
 
-  displayCurrRecommendation(recommObj) {
-    let reccomKey = null;
-    let currRecommKey = null;
-
-    reccomKey = this.getKeyForRecommendationObject(recommObj);
-    currRecommKey = this.getKeyForCurrentRecommendationSelected();
-
+  displayCurrRecommendation(recommObj, recommType) {
     if (this.recommQuickAddMode) {
+      if (this.recommQuickAddCurrentCheckItem && this.recommQuickAddCurrentCheckItem.recommType !== recommType) {
+        return true;
+      }
+
+      let reccomKey = null;
+      let currRecommKey = null;
+
+      reccomKey = this.getKeyForRecommendationObject(recommObj);
+      currRecommKey = this.getKeyForCurrentRecommendationSelected();
+
       if ((currRecommKey != null) && (reccomKey != null) && (currRecommKey === reccomKey)) {
         return true;
       } else {

@@ -1177,7 +1177,7 @@
           <div class="card-body">
             <div id="recomendations-11">
               <div formArrayName="framestage_slab_recommendations_list">
-                <div class="card" *ngFor="let recomm of getRecommendationControls(inspectiondetailsform, 'framestage_slab_recommendations_list'); let i=index;" [formGroupName]="i" [style.display]="displayCurrRecommendation(recomm) ? 'block' : 'none'">
+                <div class="card" *ngFor="let recomm of getRecommendationControls(inspectiondetailsform, 'framestage_slab_recommendations_list'); let i=index;" [formGroupName]="i" [style.display]="displayCurrRecommendation(recomm, 'framestage_slab_recommendations_list') ? 'block' : 'none'">
                   <div class="card-body">
                     <div class="pull-right"><a data-toggle="tooltip" title="" class="btn btn-default" data-original-title="Remove this recommendation" [ngClass]="(recomm.value.isquickitem) ? [getKeyForRecommendationObject(recomm), 'closequickadded'] : ''"
                         (click)="onDeleteRecommendations($event, 'framestage_slab_recommendations_list', i)"><i class="fa fa-times"></i></a></div>
@@ -1687,7 +1687,7 @@
           <div class="card-body">
             <div id="recomendations-12">
               <div formArrayName="walls_beams_recommendations_list">
-                <div class="card" *ngFor="let recomm of getRecommendationControls(inspectiondetailsform, 'walls_beams_recommendations_list'); let i=index;" [formGroupName]="i" [style.display]="displayCurrRecommendation(recomm) ? 'block' : 'none'">
+                <div class="card" *ngFor="let recomm of getRecommendationControls(inspectiondetailsform, 'walls_beams_recommendations_list'); let i=index;" [formGroupName]="i" [style.display]="displayCurrRecommendation(recomm, 'walls_beams_recommendations_list') ? 'block' : 'none'">
                   <div class="card-body">
                     <div class="pull-right"><a data-toggle="tooltip" title="" class="btn btn-default" data-original-title="Remove this recommendation" [ngClass]="(recomm.value.isquickitem) ? [getKeyForRecommendationObject(recomm), 'closequickadded'] : ''"
                         (click)="onDeleteRecommendations($event, 'walls_beams_recommendations_list', i)"><i class="fa fa-times"></i></a></div>
@@ -2117,7 +2117,7 @@
           <div class="card-body">
             <div id="recomendations-13">
               <div formArrayName="roof_recommendations_list">
-                <div class="card" *ngFor="let recomm of getRecommendationControls(inspectiondetailsform, 'roof_recommendations_list'); let i=index;" [formGroupName]="i" [style.display]="displayCurrRecommendation(recomm) ? 'block' : 'none'">
+                <div class="card" *ngFor="let recomm of getRecommendationControls(inspectiondetailsform, 'roof_recommendations_list'); let i=index;" [formGroupName]="i" [style.display]="displayCurrRecommendation(recomm, 'roof_recommendations_list') ? 'block' : 'none'">
                   <div class="card-body">
                     <div class="pull-right"><a data-toggle="tooltip" title="" class="btn btn-default" data-original-title="Remove this recommendation" [ngClass]="(recomm.value.isquickitem) ? [getKeyForRecommendationObject(recomm), 'closequickadded'] : ''"
                         (click)="onDeleteRecommendations($event, 'roof_recommendations_list', i)"><i class="fa fa-times"></i></a></div>
@@ -2435,7 +2435,7 @@
           <div class="card-body">
             <div id="recomendations-11">
               <div formArrayName="new_slab_recommendations_list">
-                <div class="card" *ngFor="let recomm of getRecommendationControls(inspectiondetailsform, 'new_slab_recommendations_list'); let i=index;" [formGroupName]="i" [style.display]="displayCurrRecommendation(recomm) ? 'block' : 'none'">
+                <div class="card" *ngFor="let recomm of getRecommendationControls(inspectiondetailsform, 'new_slab_recommendations_list'); let i=index;" [formGroupName]="i" [style.display]="displayCurrRecommendation(recomm, 'new_slab_recommendations_list') ? 'block' : 'none'">
                   <div class="card-body">
                     <div class="pull-right"><a data-toggle="tooltip" title="" class="btn btn-default" data-original-title="Remove this recommendation" [ngClass]="(recomm.value.isquickitem) ? [getKeyForRecommendationObject(recomm), 'closequickadded'] : ''"
                         (click)="onDeleteRecommendations($event, 'new_slab_recommendations_list', i)"><i class="fa fa-times"></i></a></div>
@@ -2688,7 +2688,7 @@
           <div class="card-body">
             <div id="recomendations-12">
               <div formArrayName="preslab_services_recommendations_list">
-                <div class="card" *ngFor="let recomm of getRecommendationControls(inspectiondetailsform, 'preslab_services_recommendations_list'); let i=index;" [formGroupName]="i" [style.display]="displayCurrRecommendation(recomm) ? 'block' : 'none'">
+                <div class="card" *ngFor="let recomm of getRecommendationControls(inspectiondetailsform, 'preslab_services_recommendations_list'); let i=index;" [formGroupName]="i" [style.display]="displayCurrRecommendation(recomm, 'preslab_services_recommendations_list') ? 'block' : 'none'">
                   <div class="card-body">
                     <div class="pull-right"><a data-toggle="tooltip" title="" class="btn btn-default" data-original-title="Remove this recommendation" [ngClass]="(recomm.value.isquickitem) ? [getKeyForRecommendationObject(recomm), 'closequickadded'] : ''"
                         (click)="onDeleteRecommendations($event, 'preslab_services_recommendations_list', i)"><i class="fa fa-times"></i></a></div>
@@ -3006,7 +3006,7 @@
           <div class="card-body">
             <div id="recomendations-14">
               <div formArrayName="lockup_recommendations_list">
-                <div class="card" *ngFor="let recomm of getRecommendationControls(inspectiondetailsform, 'lockup_recommendations_list'); let i=index;" [formGroupName]="i" [style.display]="displayCurrRecommendation(recomm) ? 'block' : 'none'">
+                <div class="card" *ngFor="let recomm of getRecommendationControls(inspectiondetailsform, 'lockup_recommendations_list'); let i=index;" [formGroupName]="i" [style.display]="displayCurrRecommendation(recomm, 'lockup_recommendations_list') ? 'block' : 'none'">
                   <div class="card-body">
                     <div class="pull-right"><a data-toggle="tooltip" title="" class="btn btn-default" data-original-title="Remove this recommendation" [ngClass]="(recomm.value.isquickitem) ? [getKeyForRecommendationObject(recomm), 'closequickadded'] : ''"
                         (click)="onDeleteRecommendations($event, 'lockup_recommendations_list', i)"><i class="fa fa-times"></i></a></div>
@@ -3255,7 +3255,7 @@
             <div class="card-body">
               <div id="recomendations-14">
                 <div formArrayName="lockup_recommendations_internal_list">
-                  <div class="card" *ngFor="let recomm of getRecommendationControls(inspectiondetailsform, 'lockup_recommendations_internal_list'); let i=index;" [formGroupName]="i" [style.display]="displayCurrRecommendation(recomm) ? 'block' : 'none'">
+                  <div class="card" *ngFor="let recomm of getRecommendationControls(inspectiondetailsform, 'lockup_recommendations_internal_list'); let i=index;" [formGroupName]="i" [style.display]="displayCurrRecommendation(recomm, 'lockup_recommendations_internal_list') ? 'block' : 'none'">
                     <div class="card-body">
                       <div class="pull-right"><a data-toggle="tooltip" title="" class="btn btn-default" data-original-title="Remove this recommendation" [ngClass]="(recomm.value.isquickitem) ? [getKeyForRecommendationObject(recomm), 'closequickadded'] : ''"
                           (click)="onDeleteRecommendations($event, 'lockup_recommendations_internal_list', i)"><i class="fa fa-times"></i></a></div>
@@ -3595,7 +3595,7 @@
           <div class="card-body">
             <div id="recomendations-1">
               <div formArrayName="hallways_recommendations_list">
-                <div class="card" *ngFor="let recomm of getRecommendationControls(inspectiondetailsform, 'hallways_recommendations_list'); let i=index;" [formGroupName]="i" [style.display]="displayCurrRecommendation(recomm) ? 'block' : 'none'">
+                <div class="card" *ngFor="let recomm of getRecommendationControls(inspectiondetailsform, 'hallways_recommendations_list'); let i=index;" [formGroupName]="i" [style.display]="displayCurrRecommendation(recomm, 'hallways_recommendations_list') ? 'block' : 'none'">
                   <div class="card-body">
                     <div class="pull-right"><a data-toggle="tooltip" title="" class="btn btn-default" data-original-title="Remove this recommendation" [ngClass]="(recomm.value.isquickitem) ? [getKeyForRecommendationObject(recomm), 'closequickadded'] : ''"
                         (click)="onDeleteRecommendations($event, 'hallways_recommendations_list', i)"><i class="fa fa-times"></i></a></div>
@@ -4098,7 +4098,7 @@
           <div class="card-body">
             <div id="recomendations-2">
               <div formArrayName="kitchen_recommendations_list">
-                <div class="card" *ngFor="let recomm of getRecommendationControls(inspectiondetailsform, 'kitchen_recommendations_list'); let i=index;" [formGroupName]="i" [style.display]="displayCurrRecommendation(recomm) ? 'block' : 'none'">
+                <div class="card" *ngFor="let recomm of getRecommendationControls(inspectiondetailsform, 'kitchen_recommendations_list'); let i=index;" [formGroupName]="i" [style.display]="displayCurrRecommendation(recomm, 'kitchen_recommendations_list') ? 'block' : 'none'">
                   <div class="card-body">
                     <div class="pull-right"><a data-toggle="tooltip" title="" class="btn btn-default" data-original-title="Remove this recommendation" [ngClass]="(recomm.value.isquickitem) ? [getKeyForRecommendationObject(recomm), 'closequickadded'] : ''"
                         (click)="onDeleteRecommendations($event, 'kitchen_recommendations_list', i)"><i class="fa fa-times"></i></a></div>
@@ -4462,7 +4462,7 @@
           <div class="card-body">
             <div id="recomendations-3">
               <div  formArrayName="laundry_recommendations_list">
-                <div class="card" *ngFor="let recomm of getRecommendationControls(inspectiondetailsform, 'laundry_recommendations_list'); let i=index;" [formGroupName]="i" [style.display]="displayCurrRecommendation(recomm) ? 'block' : 'none'">
+                <div class="card" *ngFor="let recomm of getRecommendationControls(inspectiondetailsform, 'laundry_recommendations_list'); let i=index;" [formGroupName]="i" [style.display]="displayCurrRecommendation(recomm, 'laundry_recommendations_list') ? 'block' : 'none'">
                   <div class="card-body">
                     <div class="pull-right"><a data-toggle="tooltip" title="" class="btn btn-default" data-original-title="Remove this recommendation" [ngClass]="(recomm.value.isquickitem) ? [getKeyForRecommendationObject(recomm), 'closequickadded'] : ''"
                         (click)="onDeleteRecommendations($event, 'laundry_recommendations_list', i)"><i class="fa fa-times"></i></a></div>
@@ -5403,7 +5403,7 @@
           <div class="card-body">
             <div id="recomendations-4">
               <div formArrayName="bedrooms_recommendations_list">
-                <div class="card" *ngFor="let recomm of getRecommendationControls(inspectiondetailsform, 'bedrooms_recommendations_list'); let i=index;" [formGroupName]="i" [style.display]="displayCurrRecommendation(recomm) ? 'block' : 'none'">
+                <div class="card" *ngFor="let recomm of getRecommendationControls(inspectiondetailsform, 'bedrooms_recommendations_list'); let i=index;" [formGroupName]="i" [style.display]="displayCurrRecommendation(recomm, 'bedrooms_recommendations_list') ? 'block' : 'none'">
                   <div class="card-body">
                     <div class="pull-right"><a data-toggle="tooltip" title="" class="btn btn-default" data-original-title="Remove this recommendation" [ngClass]="(recomm.value.isquickitem) ? [getKeyForRecommendationObject(recomm), 'closequickadded'] : ''"
                         (click)="onDeleteRecommendations($event, 'bedrooms_recommendations_list', i)"><i class="fa fa-times"></i></a></div>
@@ -6021,7 +6021,7 @@
           <div class="card-body">
             <div id="recomendations-5">
               <div formArrayName="bathrooms_recommendations_list">
-                <div class="card" *ngFor="let recomm of getRecommendationControls(inspectiondetailsform, 'bathrooms_recommendations_list'); let i=index;" [formGroupName]="i" [style.display]="displayCurrRecommendation(recomm) ? 'block' : 'none'">
+                <div class="card" *ngFor="let recomm of getRecommendationControls(inspectiondetailsform, 'bathrooms_recommendations_list'); let i=index;" [formGroupName]="i" [style.display]="displayCurrRecommendation(recomm, 'bathrooms_recommendations_list') ? 'block' : 'none'">
                   <div class="card-body">
                     <div class="pull-right"><a data-toggle="tooltip" title="" class="btn btn-default" data-original-title="Remove this recommendation" [ngClass]="(recomm.value.isquickitem) ? [getKeyForRecommendationObject(recomm), 'closequickadded'] : ''"
                         (click)="onDeleteRecommendations($event, 'bathrooms_recommendations_list', i)"><i class="fa fa-times"></i></a></div>
@@ -6639,7 +6639,7 @@
           <div class="card-body">
             <div id="recomendations-6">
               <div formArrayName="ensuite_recommendations_list">
-                <div class="card" *ngFor="let recomm of getRecommendationControls(inspectiondetailsform, 'ensuite_recommendations_list'); let i=index;" [formGroupName]="i" [style.display]="displayCurrRecommendation(recomm) ? 'block' : 'none'">
+                <div class="card" *ngFor="let recomm of getRecommendationControls(inspectiondetailsform, 'ensuite_recommendations_list'); let i=index;" [formGroupName]="i" [style.display]="displayCurrRecommendation(recomm, 'ensuite_recommendations_list') ? 'block' : 'none'">
                   <div class="card-body">
                     <div class="pull-right"><a data-toggle="tooltip" title="" class="btn btn-default" data-original-title="Remove this recommendation" [ngClass]="(recomm.value.isquickitem) ? [getKeyForRecommendationObject(recomm), 'closequickadded'] : ''"
                         (click)="onDeleteRecommendations($event, 'ensuite_recommendations_list', i)"><i class="fa fa-times"></i></a></div>
@@ -7420,7 +7420,7 @@
           <div class="card-body">
             <div id="recomendations-7">
               <div formArrayName="external_recommendations_list">
-                <div class="card" *ngFor="let recomm of getRecommendationControls(inspectiondetailsform, 'external_recommendations_list'); let i=index;" [formGroupName]="i" [style.display]="displayCurrRecommendation(recomm) ? 'block' : 'none'">
+                <div class="card" *ngFor="let recomm of getRecommendationControls(inspectiondetailsform, 'external_recommendations_list'); let i=index;" [formGroupName]="i" [style.display]="displayCurrRecommendation(recomm, 'external_recommendations_list') ? 'block' : 'none'">
                   <div class="card-body">
                     <div class="pull-right"><a data-toggle="tooltip" title="" class="btn btn-default" data-original-title="Remove this recommendation" [ngClass]="(recomm.value.isquickitem) ? [getKeyForRecommendationObject(recomm), 'closequickadded'] : ''"
                         (click)="onDeleteRecommendations($event, 'external_recommendations_list', i)"><i class="fa fa-times"></i></a></div>
@@ -8195,7 +8195,7 @@
           <div class="card-body">
             <div id="recomendations-7">
               <div formArrayName="external_recommendations_list">
-                <div class="card" *ngFor="let recomm of getRecommendationControls(inspectiondetailsform, 'external_recommendations_list'); let i=index;" [formGroupName]="i" [style.display]="displayCurrRecommendation(recomm) ? 'block' : 'none'">
+                <div class="card" *ngFor="let recomm of getRecommendationControls(inspectiondetailsform, 'external_recommendations_list'); let i=index;" [formGroupName]="i" [style.display]="displayCurrRecommendation(recomm, 'external_recommendations_list') ? 'block' : 'none'">
                   <div class="card-body">
                     <div class="pull-right"><a data-toggle="tooltip" title="" class="btn btn-default" data-original-title="Remove this recommendation" [ngClass]="(recomm.value.isquickitem) ? [getKeyForRecommendationObject(recomm), 'closequickadded'] : ''"
                         (click)="onDeleteRecommendations($event, 'external_recommendations_list', i)"><i class="fa fa-times"></i></a></div>
@@ -8695,7 +8695,7 @@
           <div class="card-body">
             <div id="recomendations-10">
               <div formArrayName="internal_recommendations_list">
-                <div class="card" *ngFor="let recomm of getRecommendationControls(inspectiondetailsform, 'internal_recommendations_list'); let i=index;" [formGroupName]="i" [style.display]="displayCurrRecommendation(recomm) ? 'block' : 'none'">
+                <div class="card" *ngFor="let recomm of getRecommendationControls(inspectiondetailsform, 'internal_recommendations_list'); let i=index;" [formGroupName]="i" [style.display]="displayCurrRecommendation(recomm, 'internal_recommendations_list') ? 'block' : 'none'">
                   <div class="card-body">
                     <div class="pull-right"><a data-toggle="tooltip" title="" class="btn btn-default" data-original-title="Remove this recommendation" [ngClass]="(recomm.value.isquickitem) ? [getKeyForRecommendationObject(recomm), 'closequickadded'] : ''"
                         (click)="onDeleteRecommendations($event, 'internal_recommendations_list', i)"><i class="fa fa-times"></i></a></div>
