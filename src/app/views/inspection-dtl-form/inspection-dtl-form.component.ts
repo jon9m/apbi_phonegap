@@ -2070,7 +2070,6 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
     let formCtrlArray = (<FormArray>this.inspectiondetailsform.get(this.recommQuickAddCurrentCheckItem.recommType)).controls;
     if (formCtrlArray && formCtrlArray.length > 0) {
       formCtrlArray.forEach((elem) => {
-        console.log(elem);
         if (elem && elem.value) {
           this.checkAndSetQuickItemValue(elem);
         }
@@ -2079,6 +2078,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
   }
 
   checkAndSetQuickItemValue(currelem) {
+    console.log(currelem);
     let reccomKey = this.getKeyForRecommendationObject(currelem);
     let currRecommKey = this.getKeyForCurrentRecommendationSelected();
 
@@ -2187,8 +2187,6 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
 
   onRecommQuickViewCancel(recommId) {
     this.recommQuickAddMode = false;
-
-    //TODO - need to remove ??
     this.removeRecommendationsFromCurrentList(recommId);
 
     let currSetItem = this.inspectiondetailsform.get(this.recommQuickAddCurrentCheckItem.id);
@@ -2218,7 +2216,6 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
   }
 
   onClickRemoveQuickRecommendations() {
-    console.log('onClickRemoveQuickRecommendations');
     let element: HTMLElement = document.getElementById('removeQuickRecommendationsButton') as HTMLElement;
     element.click();
   }
