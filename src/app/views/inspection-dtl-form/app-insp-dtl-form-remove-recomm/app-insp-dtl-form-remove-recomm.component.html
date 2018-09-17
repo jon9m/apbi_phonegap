@@ -1,0 +1,26 @@
+<div bsModal #removeRecommModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-primary" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Remove Recommendations?</h4>
+        <button type="button" class="close" (click)="removeRecommModal.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Do you want to remove recommendations associated with this item?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="removeRecomms()">Yes</button>
+        <button type="button" class="btn btn-secondary" (click)="keepRecomms()">No</button>
+        <button type="button" style="display:none;" #removerecommclosebutton class="btn btn-secondary" (click)="removeRecommModal.hide()">Cancel</button>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+<button id="removeQuickRecommendationsButton" style="display:none;" type="button" class="btn btn-secondary" data-toggle="modal" (click)="removeRecommModal.show()">
+  r
+</button>

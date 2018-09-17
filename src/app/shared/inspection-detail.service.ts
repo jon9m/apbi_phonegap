@@ -10,6 +10,7 @@ export class InspectionDetailsService {
     private inspectionDetails: InspectionDetails;
     public formVersionForceSaveSubject = new Subject<{ isSaveExit: boolean, isQuickSave: boolean }>();
     public formCompleteSubject = new Subject<{ isComplete: boolean }>();
+    public removeQuickRecommSubject = new Subject<{ doRemove: boolean }>();
 
     private isSaveAndExit: boolean;
     private isQuickSave: boolean;
@@ -51,6 +52,14 @@ export class InspectionDetailsService {
 
     public setFormComplete() {
         this.formCompleteSubject.next({ isComplete: true });
+    }
+
+    public doRemoveQuickRecommSubject() {
+        this.removeQuickRecommSubject.next({ doRemove: true });
+    }
+
+    public doKeepQuickRecommSubject() {
+        this.removeQuickRecommSubject.next({ doRemove: false });
     }
 
     public getSaveAndExit() {

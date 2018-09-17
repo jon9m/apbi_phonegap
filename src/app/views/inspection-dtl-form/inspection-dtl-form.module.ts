@@ -10,6 +10,7 @@ import { InspDtlFormSavePopupComponent } from './insp-dtl-form-save-popup/insp-d
 import { ModalModule } from "ngx-bootstrap/modal";
 import { TabIndexModule } from '../../shared/TabIndexModule/tabIndex.module';
 import { InspDtlFormCompletePopupComponent } from './insp-dtl-form-complete-popup/insp-dtl-form-complete-popup.component';
+import { AppInspDtlFormRemoveRecommComponent } from './app-insp-dtl-form-remove-recomm/app-insp-dtl-form-remove-recomm.component';
 
 @NgModule({
   imports: [
@@ -19,7 +20,7 @@ import { InspDtlFormCompletePopupComponent } from './insp-dtl-form-complete-popu
     TabIndexModule,
     ModalModule.forRoot()
   ],
-  declarations: [InspectionDtlFormComponent, FileUploadComponentComponent, InspDtlFormSavePopupComponent, InspDtlFormCompletePopupComponent],
+  declarations: [InspectionDtlFormComponent, FileUploadComponentComponent, InspDtlFormSavePopupComponent, InspDtlFormCompletePopupComponent, AppInspDtlFormRemoveRecommComponent],
   providers: [FileUploadService, RefreshGuard],
   exports: []
 })

@@ -77,6 +77,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
 
   private formVersionSubscription: Subscription;
   private formCompleteSubscription: Subscription;
+  private removeQuickRecommSubscription: Subscription;
 
   insp_type_pre_purchase_building_inspection;
   insp_type_pre_sale_building_inspection;
@@ -93,7 +94,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
   insp_type_new_building_inspection_4_stages_package;
 
   recommQuickAddMode: boolean = false;
-  recommQuickAddCurrentCheckItem: { id: '', recType: '', recommType_short: '', recDetails: '', recommType: '', typee: '' };
+  recommQuickAddCurrentCheckItem: { id: '', recType: '', recommType_short: '', recDetails: '', recommType: '', typee: '', recommId: '' };
 
   popupOverlay: boolean = false;
 
@@ -152,6 +153,14 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
 
     this.formCompleteSubscription = this.inspectionDetailsService.formCompleteSubject.subscribe(status => {
       this.formComplete(status);
+    });
+
+    this.removeQuickRecommSubscription = this.inspectionDetailsService.removeQuickRecommSubject.subscribe(status => {
+      if (status.doRemove === true) {
+        this.removeRecommsFromCurrentList();
+      } else {
+        this.keepRecommsFromCurrentList();
+      }
     });
 
     this.sub = this.route.params.subscribe(params => {
@@ -224,6 +233,9 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
     }
     if (this.formCompleteSubscription != null) {
       this.formCompleteSubscription.unsubscribe();
+    }
+    if (this.removeQuickRecommSubscription != null) {
+      this.removeQuickRecommSubscription.unsubscribe();
     }
 
     this.fileUploadProgressService.clearMap();
@@ -2050,18 +2062,41 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
     this.inspDtlFieldSet.nativeElement.disabled = !this.inspDtlFieldSet.nativeElement.disabled;
   }
 
+  removeRecommsFromCurrentList() {
+    this.removeRecommendationsFromCurrentList(this.recommQuickAddCurrentCheckItem.recommId);
+  }
+
+  keepRecommsFromCurrentList() {
+    let formCtrlArray = (<FormArray>this.inspectiondetailsform.get(this.recommQuickAddCurrentCheckItem.recommType)).controls;
+    if (formCtrlArray && formCtrlArray.length > 0) {
+      formCtrlArray.forEach((elem) => {
+        console.log(elem);
+        if (elem && elem.value) {
+          this.checkAndSetQuickItemValue(elem);
+        }
+      });
+    }
+  }
+
+  checkAndSetQuickItemValue(currelem) {
+    let reccomKey = this.getKeyForRecommendationObject(currelem);
+    let currRecommKey = this.getKeyForCurrentRecommendationSelected();
+
+    if ((currRecommKey != null) && (reccomKey != null) && (currRecommKey === reccomKey)) {
+      currelem.value.isquickitem = false;
+    }
+  }
+
   //Show Recommendations
   showRecommendations(event, recommId, recommType_short, id, itemType, itemValue, recommType, typee) {
-    this.recommQuickAddCurrentCheckItem = { id: id, recType: itemValue, recommType_short: recommType_short, recDetails: itemType, recommType: recommType, typee: typee };
+    this.recommQuickAddCurrentCheckItem = { id: id, recType: itemValue, recommType_short: recommType_short, recDetails: itemType, recommType: recommType, typee: typee, recommId: recommId };
     console.log(this.recommQuickAddCurrentCheckItem);
 
     //If already checked
     let currSetItem = this.inspectiondetailsform.get(this.recommQuickAddCurrentCheckItem.id);
     if (currSetItem && currSetItem.value === true) {
       this.recommQuickAddMode = false;
-      // currSetItem.setValue(false);
-      //TODO - prompt to remove recommendations
-      this.removeRecommendationsFromCurrentList(recommId);
+      this.onClickRemoveQuickRecommendations();
       return;
     } else {
       this.recommQuickAddMode = true;
@@ -2180,5 +2215,11 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
 
   hidePopupOverlay() {
     this.popupOverlay = false;
+  }
+
+  onClickRemoveQuickRecommendations() {
+    console.log('onClickRemoveQuickRecommendations');
+    let element: HTMLElement = document.getElementById('removeQuickRecommendationsButton') as HTMLElement;
+    element.click();
   }
 }
