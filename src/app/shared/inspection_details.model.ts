@@ -29,6 +29,7 @@ export class InspectionDetails {
     public type_2: string = '-';
     public bedrooms: string = '-';
     public bathrooms: string = '-';
+    public ensuites: string = '-';
     public car_park: string = '-';
     public height: string = '-';
     public building: string = '-';

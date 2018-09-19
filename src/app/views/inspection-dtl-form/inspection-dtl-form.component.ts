@@ -2754,6 +2754,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
       'type_2': '',
       'bedrooms': '',
       'bathrooms': '',
+      'ensuites': '',
       'car_park': '',
       'height': '',
       'building': '',
@@ -3282,5 +3283,15 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
   onClickRemoveQuickRecommendations() {
     let element: HTMLElement = document.getElementById('removeQuickRecommendationsButton') as HTMLElement;
     element.click();
+  }
+
+  showCurrItem(itemType, itemNumber: number) {
+    let noOfEnsuites = this.inspectiondetailsform.get(itemType).value;
+    console.log("Ensuite change number of ensuites ****** ", itemType, ", ", itemNumber, ", ", noOfEnsuites);
+
+    if (itemNumber <= AppUtils.getNumberForItemValue(noOfEnsuites)) {
+      return true;
+    }
+    return false;
   }
 }

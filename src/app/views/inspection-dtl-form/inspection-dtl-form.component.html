@@ -115,6 +115,20 @@
                 </div>
               </div>
               <div class="col-sm-12">
+                  <div class="form-group">
+                    <label class="control-label" for="input-order-status">Ensuites:</label>
+                    <select formControlName="ensuites" (change)="onSave(false,true)" id="input-order-status" class="form-control">
+                        <option value="-">-</option>
+                        <option value="One">One</option>
+                        <option value="Two">Two</option>
+                        <option value="Three">Three</option>
+                        <option value="Four">Four</option>
+                        <option value="Five">Five</option>
+                        <option value="Other">Other</option>
+                    </select>
+                  </div>
+                </div>
+              <div class="col-sm-12">
                 <div class="form-group">
                   <label class="car-park" for="input-order-status">Car Park:</label>
                   <select formControlName="car_park" (change)="onSave(false,true)" id="input-order-status" class="form-control">
@@ -4562,6 +4576,8 @@
                   Not Applicable
                 </div>
               </div><br/>
+
+              <ng-template [ngIf]="showCurrItem('bedrooms', 0)">
               <div class="resp-table-row">
                 <h4>
                   <span class="badge badge-light"> Bedroom 1 </span>
@@ -4728,6 +4744,9 @@
                   <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1294" value="1"/><span class="checkbox"></span></label>
                 </div>
               </div><br/>
+              </ng-template>
+
+              <ng-template [ngIf]="showCurrItem('bedrooms', 1)">
               <div class="resp-table-row">
                 <h4>
                   <span class="badge badge-light"> Bedroom 2 </span>
@@ -4894,6 +4913,9 @@
                   <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1342" value="1"/><span class="checkbox"></span></label>
                 </div>
               </div><br/>
+              </ng-template>
+
+              <ng-template [ngIf]="showCurrItem('bedrooms', 2)">
               <div class="resp-table-row">
                 <h4>
                   <span class="badge badge-light"> Bedroom 3 </span>
@@ -5060,6 +5082,9 @@
                   <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1390" value="1"/><span class="checkbox"></span></label>
                 </div>
               </div><br/>
+              </ng-template>
+
+              <ng-template [ngIf]="showCurrItem('bedrooms', 3)">
               <div class="resp-table-row">
                 <h4>
                   <span class="badge badge-light"> Bedroom 4 </span>
@@ -5226,172 +5251,176 @@
                   <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1438" value="1"/><span class="checkbox"></span></label>
                 </div>
               </div><br/>
-              <div class="resp-table-row">
-                <h4>
-                  <span class="badge badge-light"> Bedroom 5 </span>
-                </h4>          
-              </div>
-              <div class="resp-table-row">
-                <div class="table-body-cell">
-                  Floor
+              </ng-template>
+
+              <ng-template [ngIf]="showCurrItem('bedrooms', 4)">
+                <div class="resp-table-row">
+                  <h4>
+                    <span class="badge badge-light"> Bedroom 5 </span>
+                  </h4>          
                 </div>
-                <div class="table-body-cell">
-                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1445" value="1"/><span class="checkbox"></span></label>
+                <div class="resp-table-row">
+                  <div class="table-body-cell">
+                    Floor
+                  </div>
+                  <div class="table-body-cell">
+                    <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1445" value="1"/><span class="checkbox"></span></label>
+                  </div>
+                  <div class="table-body-cell">
+                    <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1446" value="1"/><span class="checkbox" (click)="showRecommendations($event, 'bedrooms-11','Bedrooms', '1446', 'Floor', 'General Advice on Item', 'bedrooms_recommendations_list','Bedrooms')"></span></label>
+                  </div>
+                  <div class="table-body-cell">
+                    <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1447" value="1"/><span class="checkbox" (click)="showRecommendations($event, 'bedrooms-11','Bedrooms', '1447', 'Floor', 'Repair Recommended', 'bedrooms_recommendations_list','Bedrooms')"></span></label>
+                  </div>
+                  <div class="table-body-cell">
+                    <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1448" value="1"/><span class="checkbox" (click)="showRecommendations($event, 'bedrooms-11','Bedrooms', '1448', 'Floor', 'Major Structural Defect', 'bedrooms_recommendations_list','Bedrooms')"></span></label>
+                  </div>
+                  <div class="table-body-cell">
+                    <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1449" value="1"/><span class="checkbox"></span></label>
+                  </div>
+                  <div class="table-body-cell">
+                    <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1450" value="1"/><span class="checkbox"></span></label>
+                  </div>
                 </div>
-                <div class="table-body-cell">
-                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1446" value="1"/><span class="checkbox" (click)="showRecommendations($event, 'bedrooms-11','Bedrooms', '1446', 'Floor', 'General Advice on Item', 'bedrooms_recommendations_list','Bedrooms')"></span></label>
+                <div class="resp-table-row">
+                  <div class="table-body-cell">
+                    Walls
+                  </div>
+                  <div class="table-body-cell">
+                    <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1451" value="1"/><span class="checkbox"></span></label>
+                  </div>
+                  <div class="table-body-cell">
+                    <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1452" value="1"/><span class="checkbox" (click)="showRecommendations($event, 'bedrooms-11','Bedrooms', '1452', 'Walls', 'General Advice on Item', 'bedrooms_recommendations_list','Bedrooms')"></span></label>
+                  </div>
+                  <div class="table-body-cell">
+                    <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1453" value="1"/><span class="checkbox" (click)="showRecommendations($event, 'bedrooms-11','Bedrooms', '1453', 'Walls', 'Repair Recommended', 'bedrooms_recommendations_list','Bedrooms')"></span></label>
+                  </div>
+                  <div class="table-body-cell">
+                    <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1454" value="1"/><span class="checkbox" (click)="showRecommendations($event, 'bedrooms-11','Bedrooms', '1454', 'Walls', 'Major Structural Defect', 'bedrooms_recommendations_list','Bedrooms')"></span></label>
+                  </div>
+                  <div class="table-body-cell">
+                    <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1455" value="1"/><span class="checkbox"></span></label>
+                  </div>
+                  <div class="table-body-cell">
+                    <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1456" value="1"/><span class="checkbox"></span></label>
+                  </div>
                 </div>
-                <div class="table-body-cell">
-                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1447" value="1"/><span class="checkbox" (click)="showRecommendations($event, 'bedrooms-11','Bedrooms', '1447', 'Floor', 'Repair Recommended', 'bedrooms_recommendations_list','Bedrooms')"></span></label>
+                <div class="resp-table-row">
+                  <div class="table-body-cell">
+                    Ceiling
+                  </div>
+                  <div class="table-body-cell">
+                    <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1457" value="1"/><span class="checkbox"></span></label>
+                  </div>
+                  <div class="table-body-cell">
+                    <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1458" value="1"/><span class="checkbox" (click)="showRecommendations($event, 'bedrooms-11','Bedrooms', '1458', 'Ceiling', 'General Advice on Item', 'bedrooms_recommendations_list','Bedrooms')"></span></label>
+                  </div>
+                  <div class="table-body-cell">
+                    <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1459" value="1"/><span class="checkbox" (click)="showRecommendations($event, 'bedrooms-11','Bedrooms', '1459', 'Ceiling', 'Repair Recommended', 'bedrooms_recommendations_list','Bedrooms')"></span></label>
+                  </div>
+                  <div class="table-body-cell">
+                    <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1460" value="1"/><span class="checkbox" (click)="showRecommendations($event, 'bedrooms-11','Bedrooms', '1460', 'Ceiling', 'Major Structural Defect', 'bedrooms_recommendations_list','Bedrooms')"></span></label>
+                  </div>
+                  <div class="table-body-cell">
+                    <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1461" value="1"/><span class="checkbox"></span></label>
+                  </div>
+                  <div class="table-body-cell">
+                    <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1462" value="1"/><span class="checkbox"></span></label>
+                  </div>
                 </div>
-                <div class="table-body-cell">
-                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1448" value="1"/><span class="checkbox" (click)="showRecommendations($event, 'bedrooms-11','Bedrooms', '1448', 'Floor', 'Major Structural Defect', 'bedrooms_recommendations_list','Bedrooms')"></span></label>
+                <div class="resp-table-row">
+                  <div class="table-body-cell">
+                    Robes
+                  </div>
+                  <div class="table-body-cell">
+                    <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1463" value="1"/><span class="checkbox"></span></label>
+                  </div>
+                  <div class="table-body-cell">
+                    <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1464" value="1"/><span class="checkbox" (click)="showRecommendations($event, 'bedrooms-11','Bedrooms', '1464', 'Robes', 'General Advice on Item', 'bedrooms_recommendations_list','Bedrooms')"></span></label>
+                  </div>
+                  <div class="table-body-cell">
+                    <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1465" value="1"/><span class="checkbox" (click)="showRecommendations($event, 'bedrooms-11','Bedrooms', '1465', 'Robes', 'Repair Recommended', 'bedrooms_recommendations_list','Bedrooms')"></span></label>
+                  </div>
+                  <div class="table-body-cell">
+                    <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1466" value="1"/><span class="checkbox" (click)="showRecommendations($event, 'bedrooms-11','Bedrooms', '1466', 'Robes', 'Major Structural Defect', 'bedrooms_recommendations_list','Bedrooms')"></span></label>
+                  </div>
+                  <div class="table-body-cell">
+                    <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1467" value="1"/><span class="checkbox"></span></label>
+                  </div>
+                  <div class="table-body-cell">
+                    <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1468" value="1"/><span class="checkbox"></span></label>
+                  </div>
                 </div>
-                <div class="table-body-cell">
-                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1449" value="1"/><span class="checkbox"></span></label>
+                <div class="resp-table-row">
+                  <div class="table-body-cell">
+                    Windows
+                  </div>
+                  <div class="table-body-cell">
+                    <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1469" value="1"/><span class="checkbox"></span></label>
+                  </div>
+                  <div class="table-body-cell">
+                    <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1470" value="1"/><span class="checkbox" (click)="showRecommendations($event, 'bedrooms-11','Bedrooms', '1470', 'Windows', 'General Advice on Item', 'bedrooms_recommendations_list','Bedrooms')"></span></label>
+                  </div>
+                  <div class="table-body-cell">
+                    <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1471" value="1"/><span class="checkbox" (click)="showRecommendations($event, 'bedrooms-11','Bedrooms', '1471', 'Windows', 'Repair Recommended', 'bedrooms_recommendations_list','Bedrooms')"></span></label>
+                  </div>
+                  <div class="table-body-cell">
+                    <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1472" value="1"/><span class="checkbox" (click)="showRecommendations($event, 'bedrooms-11','Bedrooms', '1472', 'Windows', 'Major Structural Defect', 'bedrooms_recommendations_list','Bedrooms')"></span></label>
+                  </div>
+                  <div class="table-body-cell">
+                    <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1473" value="1"/><span class="checkbox"></span></label>
+                  </div>
+                  <div class="table-body-cell">
+                    <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1474" value="1"/><span class="checkbox"></span></label>
+                  </div>
                 </div>
-                <div class="table-body-cell">
-                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1450" value="1"/><span class="checkbox"></span></label>
+                <div class="resp-table-row">
+                  <div class="table-body-cell">
+                    Doors
+                  </div>
+                  <div class="table-body-cell">
+                    <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1475" value="1"/><span class="checkbox"></span></label>
+                  </div>
+                  <div class="table-body-cell">
+                    <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1476" value="1"/><span class="checkbox" (click)="showRecommendations($event, 'bedrooms-11','Bedrooms', '1476', 'Doors', 'General Advice on Item', 'bedrooms_recommendations_list','Bedrooms')"></span></label>
+                  </div>
+                  <div class="table-body-cell">
+                    <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1477" value="1"/><span class="checkbox" (click)="showRecommendations($event, 'bedrooms-11','Bedrooms', '1477', 'Doors', 'Repair Recommended', 'bedrooms_recommendations_list','Bedrooms')"></span></label>
+                  </div>
+                  <div class="table-body-cell">
+                    <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1478" value="1"/><span class="checkbox" (click)="showRecommendations($event, 'bedrooms-11','Bedrooms', '1478', 'Doors', 'Major Structural Defect', 'bedrooms_recommendations_list','Bedrooms')"></span></label>
+                  </div>
+                  <div class="table-body-cell">
+                    <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1479" value="1"/><span class="checkbox"></span></label>
+                  </div>
+                  <div class="table-body-cell">
+                    <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1480" value="1"/><span class="checkbox"></span></label>
+                  </div>
                 </div>
-              </div>
-              <div class="resp-table-row">
-                <div class="table-body-cell">
-                  Walls
-                </div>
-                <div class="table-body-cell">
-                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1451" value="1"/><span class="checkbox"></span></label>
-                </div>
-                <div class="table-body-cell">
-                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1452" value="1"/><span class="checkbox" (click)="showRecommendations($event, 'bedrooms-11','Bedrooms', '1452', 'Walls', 'General Advice on Item', 'bedrooms_recommendations_list','Bedrooms')"></span></label>
-                </div>
-                <div class="table-body-cell">
-                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1453" value="1"/><span class="checkbox" (click)="showRecommendations($event, 'bedrooms-11','Bedrooms', '1453', 'Walls', 'Repair Recommended', 'bedrooms_recommendations_list','Bedrooms')"></span></label>
-                </div>
-                <div class="table-body-cell">
-                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1454" value="1"/><span class="checkbox" (click)="showRecommendations($event, 'bedrooms-11','Bedrooms', '1454', 'Walls', 'Major Structural Defect', 'bedrooms_recommendations_list','Bedrooms')"></span></label>
-                </div>
-                <div class="table-body-cell">
-                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1455" value="1"/><span class="checkbox"></span></label>
-                </div>
-                <div class="table-body-cell">
-                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1456" value="1"/><span class="checkbox"></span></label>
-                </div>
-              </div>
-              <div class="resp-table-row">
-                <div class="table-body-cell">
-                  Ceiling
-                </div>
-                <div class="table-body-cell">
-                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1457" value="1"/><span class="checkbox"></span></label>
-                </div>
-                <div class="table-body-cell">
-                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1458" value="1"/><span class="checkbox" (click)="showRecommendations($event, 'bedrooms-11','Bedrooms', '1458', 'Ceiling', 'General Advice on Item', 'bedrooms_recommendations_list','Bedrooms')"></span></label>
-                </div>
-                <div class="table-body-cell">
-                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1459" value="1"/><span class="checkbox" (click)="showRecommendations($event, 'bedrooms-11','Bedrooms', '1459', 'Ceiling', 'Repair Recommended', 'bedrooms_recommendations_list','Bedrooms')"></span></label>
-                </div>
-                <div class="table-body-cell">
-                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1460" value="1"/><span class="checkbox" (click)="showRecommendations($event, 'bedrooms-11','Bedrooms', '1460', 'Ceiling', 'Major Structural Defect', 'bedrooms_recommendations_list','Bedrooms')"></span></label>
-                </div>
-                <div class="table-body-cell">
-                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1461" value="1"/><span class="checkbox"></span></label>
-                </div>
-                <div class="table-body-cell">
-                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1462" value="1"/><span class="checkbox"></span></label>
-                </div>
-              </div>
-              <div class="resp-table-row">
-                <div class="table-body-cell">
-                  Robes
-                </div>
-                <div class="table-body-cell">
-                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1463" value="1"/><span class="checkbox"></span></label>
-                </div>
-                <div class="table-body-cell">
-                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1464" value="1"/><span class="checkbox" (click)="showRecommendations($event, 'bedrooms-11','Bedrooms', '1464', 'Robes', 'General Advice on Item', 'bedrooms_recommendations_list','Bedrooms')"></span></label>
-                </div>
-                <div class="table-body-cell">
-                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1465" value="1"/><span class="checkbox" (click)="showRecommendations($event, 'bedrooms-11','Bedrooms', '1465', 'Robes', 'Repair Recommended', 'bedrooms_recommendations_list','Bedrooms')"></span></label>
-                </div>
-                <div class="table-body-cell">
-                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1466" value="1"/><span class="checkbox" (click)="showRecommendations($event, 'bedrooms-11','Bedrooms', '1466', 'Robes', 'Major Structural Defect', 'bedrooms_recommendations_list','Bedrooms')"></span></label>
-                </div>
-                <div class="table-body-cell">
-                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1467" value="1"/><span class="checkbox"></span></label>
-                </div>
-                <div class="table-body-cell">
-                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1468" value="1"/><span class="checkbox"></span></label>
-                </div>
-              </div>
-              <div class="resp-table-row">
-                <div class="table-body-cell">
-                  Windows
-                </div>
-                <div class="table-body-cell">
-                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1469" value="1"/><span class="checkbox"></span></label>
-                </div>
-                <div class="table-body-cell">
-                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1470" value="1"/><span class="checkbox" (click)="showRecommendations($event, 'bedrooms-11','Bedrooms', '1470', 'Windows', 'General Advice on Item', 'bedrooms_recommendations_list','Bedrooms')"></span></label>
-                </div>
-                <div class="table-body-cell">
-                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1471" value="1"/><span class="checkbox" (click)="showRecommendations($event, 'bedrooms-11','Bedrooms', '1471', 'Windows', 'Repair Recommended', 'bedrooms_recommendations_list','Bedrooms')"></span></label>
-                </div>
-                <div class="table-body-cell">
-                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1472" value="1"/><span class="checkbox" (click)="showRecommendations($event, 'bedrooms-11','Bedrooms', '1472', 'Windows', 'Major Structural Defect', 'bedrooms_recommendations_list','Bedrooms')"></span></label>
-                </div>
-                <div class="table-body-cell">
-                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1473" value="1"/><span class="checkbox"></span></label>
-                </div>
-                <div class="table-body-cell">
-                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1474" value="1"/><span class="checkbox"></span></label>
-                </div>
-              </div>
-              <div class="resp-table-row">
-                <div class="table-body-cell">
-                  Doors
-                </div>
-                <div class="table-body-cell">
-                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1475" value="1"/><span class="checkbox"></span></label>
-                </div>
-                <div class="table-body-cell">
-                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1476" value="1"/><span class="checkbox" (click)="showRecommendations($event, 'bedrooms-11','Bedrooms', '1476', 'Doors', 'General Advice on Item', 'bedrooms_recommendations_list','Bedrooms')"></span></label>
-                </div>
-                <div class="table-body-cell">
-                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1477" value="1"/><span class="checkbox" (click)="showRecommendations($event, 'bedrooms-11','Bedrooms', '1477', 'Doors', 'Repair Recommended', 'bedrooms_recommendations_list','Bedrooms')"></span></label>
-                </div>
-                <div class="table-body-cell">
-                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1478" value="1"/><span class="checkbox" (click)="showRecommendations($event, 'bedrooms-11','Bedrooms', '1478', 'Doors', 'Major Structural Defect', 'bedrooms_recommendations_list','Bedrooms')"></span></label>
-                </div>
-                <div class="table-body-cell">
-                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1479" value="1"/><span class="checkbox"></span></label>
-                </div>
-                <div class="table-body-cell">
-                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1480" value="1"/><span class="checkbox"></span></label>
-                </div>
-              </div>
-              <div class="resp-table-row">
-                <div class="table-body-cell">
-                  Smoke Detectors
-                </div>
-                <div class="table-body-cell">
-                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1481" value="1"/><span class="checkbox"></span></label>
-                </div>
-                <div class="table-body-cell">
-                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1482" value="1"/><span class="checkbox" (click)="showRecommendations($event, 'bedrooms-11','Bedrooms', '1482', 'Smoke Detectors', 'General Advice on Item', 'bedrooms_recommendations_list','Bedrooms')"></span></label>
-                </div>
-                <div class="table-body-cell">
-                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1483" value="1"/><span class="checkbox" (click)="showRecommendations($event, 'bedrooms-11','Bedrooms', '1483', 'Smoke Detectors', 'Repair Recommended', 'bedrooms_recommendations_list','Bedrooms')"></span></label>
-                </div>
-                <div class="table-body-cell">
-                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1484" value="1"/><span class="checkbox" (click)="showRecommendations($event, 'bedrooms-11','Bedrooms', '1484', 'Smoke Detectors', 'Major Structural Defect', 'bedrooms_recommendations_list','Bedrooms')"></span></label>
-                </div>
-                <div class="table-body-cell">
-                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1485" value="1"/><span class="checkbox"></span></label>
-                </div>
-                <div class="table-body-cell">
-                  <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1486" value="1"/><span class="checkbox"></span></label>
-                </div>
-              </div>        
+                <div class="resp-table-row">
+                  <div class="table-body-cell">
+                    Smoke Detectors
+                  </div>
+                  <div class="table-body-cell">
+                    <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1481" value="1"/><span class="checkbox"></span></label>
+                  </div>
+                  <div class="table-body-cell">
+                    <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1482" value="1"/><span class="checkbox" (click)="showRecommendations($event, 'bedrooms-11','Bedrooms', '1482', 'Smoke Detectors', 'General Advice on Item', 'bedrooms_recommendations_list','Bedrooms')"></span></label>
+                  </div>
+                  <div class="table-body-cell">
+                    <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1483" value="1"/><span class="checkbox" (click)="showRecommendations($event, 'bedrooms-11','Bedrooms', '1483', 'Smoke Detectors', 'Repair Recommended', 'bedrooms_recommendations_list','Bedrooms')"></span></label>
+                  </div>
+                  <div class="table-body-cell">
+                    <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1484" value="1"/><span class="checkbox" (click)="showRecommendations($event, 'bedrooms-11','Bedrooms', '1484', 'Smoke Detectors', 'Major Structural Defect', 'bedrooms_recommendations_list','Bedrooms')"></span></label>
+                  </div>
+                  <div class="table-body-cell">
+                    <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1485" value="1"/><span class="checkbox"></span></label>
+                  </div>
+                  <div class="table-body-cell">
+                    <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1486" value="1"/><span class="checkbox"></span></label>
+                  </div>
+                </div>     
+              </ng-template>   
             </div>
           </div>
         </div>  
@@ -5504,6 +5533,7 @@
               </div>
               <div id="resp-table-body">
                 <br/>
+                <ng-template [ngIf]="showCurrItem('bathrooms', 0)">
                 <div class="resp-table-row">
                   <h4>
                     <span class="badge badge-light"> Bathroom 1 </span>
@@ -6014,10 +6044,12 @@
                   <div class="table-body-cell">
                     <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1630" value="1"/><span class="checkbox"></span></label>
                   </div>
-                </div>      
-                
-                <!-- Bathroom 2 -->
+                </div>
                 <br/>
+                </ng-template>
+                <!-- Bathroom 2 -->
+
+                <ng-template [ngIf]="showCurrItem('bathrooms', 1)">
                 <div class="resp-table-row">
                   <h4>
                     <span class="badge badge-light"> Bathroom 2 </span>
@@ -6529,9 +6561,11 @@
                       <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1630_1" value="1"/><span class="checkbox"></span></label>
                     </div>
                   </div>
-
-                  <!-- Bathroom 3 -->
                   <br/>
+                  </ng-template>
+                  <!-- Bathroom 3 -->
+
+                  <ng-template [ngIf]="showCurrItem('bathrooms', 2)">
                   <div class="resp-table-row">
                     <h4>
                       <span class="badge badge-light"> Bathroom 3 </span>
@@ -7043,9 +7077,11 @@
                         <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1630_2" value="1"/><span class="checkbox"></span></label>
                       </div>
                     </div>
+                    <br/>
+                    </ng-template>
 
                     <!-- Bathroom 4 -->
-                    <br/>
+                    <ng-template [ngIf]="showCurrItem('bathrooms', 3)">
                     <div class="resp-table-row">
                       <h4>
                         <span class="badge badge-light"> Bathroom 4 </span>
@@ -7557,9 +7593,11 @@
                           <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1630_3" value="1"/><span class="checkbox"></span></label>
                         </div>
                       </div>
+                      <br/>
+                      </ng-template>
 
                       <!-- Bthroom 5 -->
-                      <br/>
+                      <ng-template [ngIf]="showCurrItem('bathrooms', 4)">
                       <div class="resp-table-row">
                         <h4>
                           <span class="badge badge-light"> Bathroom 5 </span>
@@ -8071,6 +8109,7 @@
                             <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1630_4" value="1"/><span class="checkbox"></span></label>
                           </div>
                         </div>
+                        </ng-template>
 
               </div>
             </div>
@@ -8187,6 +8226,7 @@
               <div id="resp-table-body">
                 <!-- Ensuit 1 -->
                 <br/>
+                <ng-template [ngIf]="showCurrItem('ensuites', 0)">
                 <div class="resp-table-row">
                   <h4>
                     <span class="badge badge-light"> Ensuite 1 </span>
@@ -8698,9 +8738,11 @@
                     <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1774" value="1"/><span class="checkbox"></span></label>
                   </div>
                 </div>
+                <br/>
+                </ng-template>
 
                 <!-- Ensuit 2 -->
-                <br/>
+                <ng-template [ngIf]="showCurrItem('ensuites', 1)">
                 <div class="resp-table-row">
                   <h4>
                     <span class="badge badge-light"> Ensuite 2 </span>
@@ -9212,9 +9254,11 @@
                       <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1774_1" value="1"/><span class="checkbox"></span></label>
                     </div>
                   </div>
+                  <br/>
+                  </ng-template>
 
                   <!-- Ensuite 3 -->
-                  <br/>
+                  <ng-template [ngIf]="showCurrItem('ensuites', 2)">
                   <div class="resp-table-row">
                     <h4>
                       <span class="badge badge-light"> Ensuite 3 </span>
@@ -9726,8 +9770,10 @@
                         <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1774_2" value="1"/><span class="checkbox"></span></label>
                       </div>
                     </div>
-                    <!-- Ensuite 4 -->
                     <br/>
+                    </ng-template>
+                    <!-- Ensuite 4 -->
+                    <ng-template [ngIf]="showCurrItem('ensuites', 3)">
                     <div class="resp-table-row">
                       <h4>
                         <span class="badge badge-light"> Ensuite 4 </span>
@@ -10239,8 +10285,10 @@
                           <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1774_3" value="1"/><span class="checkbox"></span></label>
                         </div>
                       </div>
-                      <!-- Ensuite 5 -->
                       <br/>
+                      </ng-template>
+                      <!-- Ensuite 5 -->
+                      <ng-template [ngIf]="showCurrItem('ensuites', 4)">
                       <div class="resp-table-row">
                         <h4>
                           <span class="badge badge-light"> Ensuite 5 </span>
@@ -10752,6 +10800,7 @@
                             <label class="custom-checkbox"><input type="checkbox" (change)="onSave(false,true)" formControlName="1774_4" value="1"/><span class="checkbox"></span></label>
                           </div>
                         </div>
+                        </ng-template>
               </div>
             </div>
           </div>

@@ -135,4 +135,9 @@ export class AppUtils {
             }
         });
     }
+
+    public static getNumberForItemValue(itemValue): number {
+        let numbers = ['One', 'Two', 'Three', 'Four', 'Five'];
+        return numbers.indexOf(itemValue);
+    }
 }
