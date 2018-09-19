@@ -175,7 +175,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
       console.log("reportType " + this.reportType);
 
       //TODO
-      this.reportType = 6;
+      // this.reportType = 6;
 
       //Initialize the form
       this.initForm();
@@ -3287,7 +3287,6 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
 
   showCurrItem(itemType, itemNumber: number) {
     let noOfEnsuites = this.inspectiondetailsform.get(itemType).value;
-    console.log("Ensuite change number of ensuites ****** ", itemType, ", ", itemNumber, ", ", noOfEnsuites);
 
     if (itemNumber <= AppUtils.getNumberForItemValue(noOfEnsuites)) {
       return true;
