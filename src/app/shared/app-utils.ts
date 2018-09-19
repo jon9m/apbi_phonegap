@@ -1,3 +1,5 @@
+import { FormGroup, FormArray, FormControl } from "@angular/forms";
+
 export class AppUtils {
     static isDisplayed: boolean = true;
     static isClickEventInitialized: boolean = false;
@@ -112,5 +114,25 @@ export class AppUtils {
             } while (obj = obj.offsetParent);
             return [curtop];
         }
+    }
+
+    public static addControlsToForm(form: FormGroup, controls: {}) {
+        Object.entries(controls).forEach(([key, value]) => {
+            if (value instanceof Array) {
+                form.addControl(key, new FormArray([]));
+            } else {
+                form.addControl(key, new FormControl(value));
+            }
+        });
+    }
+
+    public static addControlsToDynamicForm(form: FormGroup, controls: {}, index: number) {
+        Object.entries(controls).forEach(([key, value]) => {
+            if (value instanceof Array) {
+                form.addControl((key + '_' + index), new FormArray([]));
+            } else {
+                form.addControl((key + '_' + index), new FormControl(value));
+            }
+        });
     }
 }
