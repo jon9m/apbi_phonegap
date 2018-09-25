@@ -175,7 +175,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
       console.log("reportType " + this.reportType);
 
       //TODO
-      // this.reportType = 6;
+      this.reportType = 6;
 
       //Initialize the form
       this.initForm();
