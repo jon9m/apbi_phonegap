@@ -21,8 +21,8 @@ export class LoginService {
     }
 
     isAuthenticated() {
-        return true;
-        // return (this.loginResponse && this.loginResponse.flag != false) && (this.loginResponse.userId != -1);
+        // return true;
+        return (this.loginResponse && this.loginResponse.flag != false) && (this.loginResponse.userId != -1);
     }
 
     invalidateUser() {
