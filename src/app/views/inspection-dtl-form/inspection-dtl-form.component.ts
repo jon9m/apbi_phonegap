@@ -175,7 +175,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
       console.log("reportType " + this.reportType);
 
       //TODO
-      // this.reportType = 6;
+      this.reportType = 6;
 
       //Initialize the form
       this.initForm();
@@ -3215,6 +3215,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
       currRecommKey = this.getKeyForCurrentRecommendationSelected();
 
       if ((currRecommKey != null) && (reccomKey != null) && (currRecommKey === reccomKey)) {
+        AppUtils.toggleDisableSelectElements(true, "select", this.recommQuickAddCurrentCheckItem.recommId);
         return true;
       } else {
         return false;
@@ -3268,6 +3269,8 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
   onRecommQuickViewOk(recommId) {
     this.recommQuickAddMode = false;
     this.recommQuickAddCurrentCheckItem = null;
+
+    AppUtils.toggleDisableSelectElements(false, "select", recommId);
     AppUtils.resetPosition(recommId);
     this.hidePopupOverlay();
   }

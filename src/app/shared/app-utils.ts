@@ -90,7 +90,7 @@ export class AppUtils {
         destElem.style.position = 'absolute';
         destElem.style.zIndex = '1000';
         destElem.style.top = posSrcPx;
-        destElem.style.left = '50%';
+        destElem.style.left = '47%';
 
         let offsetWidthHalf: number = destElem.offsetWidth / 2;
         offsetWidthHalf = Number(offsetWidthHalf.toFixed(0));
@@ -139,5 +139,20 @@ export class AppUtils {
     public static getNumberForItemValue(itemValue): number {
         let numbers = ['One', 'Two', 'Three', 'Four', 'Five'];
         return numbers.indexOf(itemValue);
+    }
+
+    public static toggleDisableSelectElements(disable: boolean, elType: string, recommPopupId: string) {
+        let destElem: HTMLElement = <HTMLElement>document.getElementById(recommPopupId);
+        if (destElem) {
+            let selects = (<HTMLElement>destElem).getElementsByTagName(elType);
+            if (selects) {
+                for (let index = 0; index < selects.length; index++) {
+                    if (elType === 'select') {
+                        const element = selects[index];
+                        (<HTMLSelectElement>element).disabled = disable;
+                    }
+                }
+            }
+        }
     }
 }
