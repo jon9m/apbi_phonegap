@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
   loginResponse: LoginResponse;
   isSignningIn: boolean = false;
 
-  constructor(private renderer: Renderer2, private fb: FormBuilder, private httpService: HTTPService, private router: Router, private loginService: LoginService, private appServeiceLoadStatusService :AppServeiceLoadStatusService) { }
+  constructor(private renderer: Renderer2, private fb: FormBuilder, private httpService: HTTPService, private router: Router, private loginService: LoginService, private appServeiceLoadStatusService: AppServeiceLoadStatusService) { }
 
   ngOnInit(): void {
     this.loginResponse = new LoginResponse();
@@ -59,7 +59,8 @@ export class LoginComponent implements OnInit, AfterViewInit {
       (error) => {
         this.isSignningIn = false;
         this.loginResponse.flag = false;
-        this.loginError = error.message;
+        // this.loginError = error.message;
+        this.loginError = AppGlobal.MSG_SERVER_MAINTENANCE;
       }
     );
   }

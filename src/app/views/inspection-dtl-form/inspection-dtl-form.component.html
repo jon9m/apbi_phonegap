@@ -9,12 +9,24 @@
   <form [formGroup]="inspectiondetailsform">
     <input id="bookingid" type="hidden" formControlName="bookingid" />
     <input id="fversion" type="hidden" formControlName="fversion" />
+    <input id="completed" type="hidden" formControlName="completed" />
     <input id="rec_count" type="hidden" formControlName="rec_count" value="max_rec" />
     <div class="page-header">
       <div class="formbuttons">
         <div class="float-left">
           <button type="button" (click)="onFormComplete()" class="completebtn btn btn-outline-danger">
-            <i *ngIf="formSaving" class="fa fa-spinner fa-spin" style="font-size:1rem"></i>&nbsp;COMPLETE
+          
+            <ng-template [ngIf]="!isAdmin && !adminCompleted">
+              <i *ngIf="formSaving" class="fa fa-spinner fa-spin" style="font-size:1rem"></i>&nbsp;COMPLETE
+            </ng-template>
+            <ng-template [ngIf]="isAdmin && !adminCompleted">
+              <i *ngIf="formSaving" class="fa fa-spinner fa-spin" style="font-size:1rem"></i>&nbsp;MARK AS COMPLETE
+            </ng-template>
+            <ng-template [ngIf]="isAdmin && adminCompleted">
+              <i *ngIf="formSaving" class="fa fa-spinner fa-spin" style="font-size:1rem"></i>&nbsp;COMPLETED
+            </ng-template>
+          
+            <!-- <i *ngIf="formSaving" class="fa fa-spinner fa-spin" style="font-size:1rem"></i>&nbsp;COMPLETE -->
           </button>
         </div>
         <div class="pull-right float-right">

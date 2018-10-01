@@ -30,6 +30,7 @@ export class InspectionDetailsService {
         this.inspectionProperty.propertyAddress = responseJSON.propertyAddress;
         this.inspectionProperty.reportId = responseJSON.reportId;
         this.inspectionProperty.inspectionId = responseJSON.inspectionId;
+        this.inspectionProperty.editMode = responseJSON.editmode;
 
         //Reset the form
         this.inspectionDetails = new InspectionDetails();
@@ -52,6 +53,10 @@ export class InspectionDetailsService {
 
     public setFormComplete() {
         this.formCompleteSubject.next({ isComplete: true });
+    }
+
+    public unsetFormComplete() {
+        this.formCompleteSubject.next({ isComplete: false });
     }
 
     public doRemoveQuickRecommSubject() {

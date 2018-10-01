@@ -2181,4 +2181,7 @@ export class InspectionDetails {
     public internal_walling = '-';
     public windows = '-';
     public year_built = '';
+
+    //Form completed
+    public completed: string = '';
 }

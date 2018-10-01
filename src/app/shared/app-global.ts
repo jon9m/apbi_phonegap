@@ -37,6 +37,10 @@ export class AppGlobal {
     public static INSP_TYPE_NEW_BUILDING_INSPECTION_4_STAGES_PACKAGE = 13;     //New Building Inspection - 4 Stages Package
 
 
+    //Messages
+    public static MSG_SERVER_MAINTENANCE = 'The server may be undergoing maintenance, or you may be experiencing a network interruption. Please try again later.';
+
+
     //Recommendations Options
     public static TimberPest: string[] = [
         "Dwelling",

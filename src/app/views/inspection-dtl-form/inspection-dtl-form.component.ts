@@ -97,12 +97,28 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
   recommQuickAddCurrentCheckItem: { id: '', recType: '', recommType_short: '', recDetails: '', recommType: '', typee: '', recommId: '' };
 
   popupOverlay: boolean = false;
+  isAdmin: boolean = false;
+  adminCompleted: boolean = false;
 
   @ViewChildren(TabIndexDirective) tabs: QueryList<TabIndexDirective>;
 
   ngAfterViewInit(): void {
     this.appServeiceLoadStatusService.setTabQueryList(this.tabs);
     AppUtils.breadcrumbWidthHandler(true, false);
+    if (this.inspectionProperty.editMode === 'admin') {
+      let completed = this.inspectiondetails.completed;
+      this.isAdmin = true;
+      if (completed && completed === 'completed') {
+        this.adminCompleted = true;
+      }
+    } else {
+      let completed = this.inspectiondetails.completed;
+      if (completed && completed === 'completed') {
+        this.inspectionDetailsService.setFormComplete();
+      } else {
+        this.inspectionDetailsService.unsetFormComplete();
+      }
+    }
   }
 
   constructor(private route: ActivatedRoute,
@@ -152,7 +168,8 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
     });
 
     this.formCompleteSubscription = this.inspectionDetailsService.formCompleteSubject.subscribe(status => {
-      this.formComplete(status);
+      let strStatus = status.isComplete ? "true" : "false";
+      this.formComplete(strStatus);
     });
 
     this.removeQuickRecommSubscription = this.inspectionDetailsService.removeQuickRecommSubject.subscribe(status => {
@@ -2747,6 +2764,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
     }
 
     this.inspectiondetailsform = this.fb.group({
+      'completed':'',
       'fversion': '',
       'bookingid': '',
       'rec_count': '',
@@ -3124,7 +3142,14 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
   @ViewChild('inspDtlFieldSet') inspDtlFieldSet: ElementRef;
   formComplete(status) {
     console.log('formComplete');
-    this.inspDtlFieldSet.nativeElement.disabled = !this.inspDtlFieldSet.nativeElement.disabled;
+    if (status === 'true') {
+      this.inspDtlFieldSet.nativeElement.disabled = !this.inspDtlFieldSet.nativeElement.disabled;
+      if (this.isAdmin == true) {
+        this.adminCompleted = true;
+      }
+      this.inspectiondetailsform.patchValue({ 'completed': 'completed' });
+      this.onSave(false, true);
+    }
   }
 
   removeRecommsFromCurrentList() {
