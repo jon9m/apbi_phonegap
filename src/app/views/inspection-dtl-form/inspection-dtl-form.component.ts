@@ -105,18 +105,31 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
   ngAfterViewInit(): void {
     this.appServeiceLoadStatusService.setTabQueryList(this.tabs);
     AppUtils.breadcrumbWidthHandler(true, false);
-    if (this.inspectionProperty.editMode === 'admin') {
-      let completed = this.inspectiondetails.completed;
+
+    let isFormCompleted = false;
+    let completed = this.inspectiondetails.completed;
+    if (completed && completed === 'completed') {
+      isFormCompleted = true;
+    }
+
+    if (this.inspectionDetailsService.getAdminMode() === true) {
       this.isAdmin = true;
-      if (completed && completed === 'completed') {
+
+      if (isFormCompleted) {
+        this.inspectionDetailsService.setAdminCompleted(true);
         this.adminCompleted = true;
+      } else {
+        this.inspectionDetailsService.setAdminCompleted(false);
       }
     } else {
-      let completed = this.inspectiondetails.completed;
-      if (completed && completed === 'completed') {
-        this.inspectionDetailsService.setFormComplete();
+      this.isAdmin = false;
+      this.adminCompleted = false;
+      this.inspectionDetailsService.setAdminCompleted(false);
+
+      if (isFormCompleted) {
+        this.inspectionDetailsService.setFormComplete(true);
       } else {
-        this.inspectionDetailsService.unsetFormComplete();
+        this.inspectionDetailsService.unsetFormComplete(true);
       }
     }
   }
@@ -169,7 +182,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
 
     this.formCompleteSubscription = this.inspectionDetailsService.formCompleteSubject.subscribe(status => {
       let strStatus = status.isComplete ? "true" : "false";
-      this.formComplete(strStatus);
+      this.formComplete(strStatus, status.onLoading);
     });
 
     this.removeQuickRecommSubscription = this.inspectionDetailsService.removeQuickRecommSubject.subscribe(status => {
@@ -2764,7 +2777,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
     }
 
     this.inspectiondetailsform = this.fb.group({
-      'completed':'',
+      'completed': '',
       'fversion': '',
       'bookingid': '',
       'rec_count': '',
@@ -3140,15 +3153,25 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
   }
 
   @ViewChild('inspDtlFieldSet') inspDtlFieldSet: ElementRef;
-  formComplete(status) {
+  formComplete(status, onLoading) {
     console.log('formComplete');
     if (status === 'true') {
-      this.inspDtlFieldSet.nativeElement.disabled = !this.inspDtlFieldSet.nativeElement.disabled;
-      if (this.isAdmin == true) {
+      if (this.isAdmin !== true) {
+        this.adminCompleted = false;
+        this.inspDtlFieldSet.nativeElement.disabled = !this.inspDtlFieldSet.nativeElement.disabled;
+      } else {
         this.adminCompleted = true;
       }
-      this.inspectiondetailsform.patchValue({ 'completed': 'completed' });
-      this.onSave(false, true);
+      if (!onLoading) {
+        this.inspectiondetailsform.patchValue({ 'completed': 'completed' });
+        this.onSave(false, true);
+      }
+    } else {
+      this.adminCompleted = false;
+      if (!onLoading) {
+        this.inspectiondetailsform.patchValue({ 'completed': '' });
+        this.onSave(false, true);
+      }
     }
   }
 

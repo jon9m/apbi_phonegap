@@ -9,15 +9,20 @@ export class InspectionDetailsService {
     private inspectionProperty: InspectionProperty;
     private inspectionDetails: InspectionDetails;
     public formVersionForceSaveSubject = new Subject<{ isSaveExit: boolean, isQuickSave: boolean }>();
-    public formCompleteSubject = new Subject<{ isComplete: boolean }>();
+    public formCompleteSubject = new Subject<{ isComplete: boolean, onLoading: boolean }>();
+    public adminCompleteSubject = new Subject<{ isComplete: boolean }>();
     public removeQuickRecommSubject = new Subject<{ doRemove: boolean }>();
 
     private isSaveAndExit: boolean;
     private isQuickSave: boolean;
+    private adminMode: boolean;
+    private adminCompleted: boolean;
 
     constructor() {
         this.isSaveAndExit = false;
         this.isQuickSave = false;
+        this.adminCompleted = false;
+        this.adminMode = false;
 
         this.inspectionProperty = new InspectionProperty();
         this.inspectionDetails = new InspectionDetails();
@@ -51,12 +56,12 @@ export class InspectionDetailsService {
         this.formVersionForceSaveSubject.next({ isSaveExit: this.isSaveAndExit, isQuickSave: this.isQuickSave });
     }
 
-    public setFormComplete() {
-        this.formCompleteSubject.next({ isComplete: true });
+    public setFormComplete(onLoading: boolean) {
+        this.formCompleteSubject.next({ isComplete: true, onLoading: onLoading });
     }
 
-    public unsetFormComplete() {
-        this.formCompleteSubject.next({ isComplete: false });
+    public unsetFormComplete(onLoading: boolean) {
+        this.formCompleteSubject.next({ isComplete: false, onLoading: onLoading });
     }
 
     public doRemoveQuickRecommSubject() {
@@ -78,5 +83,22 @@ export class InspectionDetailsService {
     public setSaveTypes(isSaveExit, isQuickSave) {
         this.isSaveAndExit = isSaveExit;
         this.isQuickSave = isQuickSave;
+    }
+
+    public setAdminCompleted(state) {
+        this.adminCompleteSubject.next({ isComplete: state });
+        this.adminCompleted = state;
+    }
+
+    public getAdminCompleted() {
+        return this.adminCompleted;
+    }
+
+    public setAdminMode(state) {
+        this.adminMode = state;
+    }
+
+    public getAdminMode() {
+        return this.adminMode;
     }
 }

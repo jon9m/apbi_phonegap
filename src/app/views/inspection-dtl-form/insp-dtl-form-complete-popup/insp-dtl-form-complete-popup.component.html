@@ -8,12 +8,22 @@
           </button>
         </div>
         <div class="modal-body">
-          <p>Please double check the report prior to submitting to ensure it is fully completed.</p>
+          <p *ngIf="adminMode && adminCompleted; else completemsg">Enable form editing for inspector.</p>
+          <ng-template #completemsg>
+            <p>Please double check the report prior to submitting to ensure it is fully completed.</p>
+          </ng-template>
         </div>
+        
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary" (click)="completeForm()">Complete Report</button>
+          <ng-template [ngIf]="adminMode && adminCompleted" [ngIfElse]="completebtn">
+            <button type="button" class="btn btn-primary" (click)="enableEditForm()">Enable Editing For Inspector</button>
+          </ng-template>
+          <ng-template #completebtn>
+            <button type="button" class="btn btn-primary" (click)="completeForm()">Complete Report</button>
+          </ng-template>
           <button type="button" #completereportclosebutton class="btn btn-secondary" (click)="completeModal.hide()">Close</button>
         </div>
+
       </div>
       <!-- /.modal-content -->
     </div>

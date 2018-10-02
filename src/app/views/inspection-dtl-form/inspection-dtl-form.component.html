@@ -14,7 +14,7 @@
     <div class="page-header">
       <div class="formbuttons">
         <div class="float-left">
-          <button type="button" (click)="onFormComplete()" class="completebtn btn btn-outline-danger">
+          <button type="button" (click)="onFormComplete()" [ngClass]="(isAdmin && adminCompleted) ? 'btn btn-outline-info' : 'btn btn-outline-danger'">
           
             <ng-template [ngIf]="!isAdmin && !adminCompleted">
               <i *ngIf="formSaving" class="fa fa-spinner fa-spin" style="font-size:1rem"></i>&nbsp;COMPLETE
@@ -23,7 +23,7 @@
               <i *ngIf="formSaving" class="fa fa-spinner fa-spin" style="font-size:1rem"></i>&nbsp;MARK AS COMPLETE
             </ng-template>
             <ng-template [ngIf]="isAdmin && adminCompleted">
-              <i *ngIf="formSaving" class="fa fa-spinner fa-spin" style="font-size:1rem"></i>&nbsp;COMPLETED
+              <i *ngIf="formSaving" class="fa fa-spinner fa-spin" style="font-size:1rem"></i>&nbsp;ENABLE EDITING FOR INSPECTOR
             </ng-template>
           
             <!-- <i *ngIf="formSaving" class="fa fa-spinner fa-spin" style="font-size:1rem"></i>&nbsp;COMPLETE -->
