@@ -18,7 +18,7 @@ export class AppServeiceLoadStatusService {
     public calendarSearchSubject = new Subject<string>();
     public inspDtlFormDisplaySubject = new Subject<boolean>();
 
-
+    
     public clearCalendarLoadStatus() {
         this.calendarLoadStatus = false;
     }

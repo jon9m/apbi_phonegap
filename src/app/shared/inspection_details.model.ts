@@ -3,6 +3,7 @@ import { InspectionRecommendation } from "./inspection-recommendation.model";
 export class InspectionDetails {
 
     public fversion: string = '';
+    public forcesave: string = '';
 
     public hallways_recommendations_list: InspectionRecommendation[] = [];
     public kitchen_recommendations_list: InspectionRecommendation[] = [];

@@ -26,7 +26,8 @@ export class HTTPService {
 
     getAppStatus() {
         let currURL = this.appStatusUrl + "?time=" + new Date().getTime();
-        return this.http.post(currURL, {}, { responseType: 'text' });
+        // return this.http.post(currURL, {}, { responseType: 'text' });
+        return this.http.post(currURL, {});
     }
     loadCalendar(postObj) {
         let currURL = this.calendarFeedUrl + "?time=" + new Date().getTime();

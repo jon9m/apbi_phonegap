@@ -2779,6 +2779,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
     this.inspectiondetailsform = this.fb.group({
       'completed': '',
       'fversion': '',
+      'forcesave': '',
       'bookingid': '',
       'rec_count': '',
       'type_1': '',
@@ -3084,6 +3085,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
     this.addReportSub = this.httpService.addReport(this.inspectiondetailsform.value).subscribe(
       (response: Response) => {
         if (response['forcesave'] && response['forcesave'] == 'true') {
+          this.inspectiondetailsform.patchValue({ 'forcesave': response['forcesave'] });
           this.inspectionDetailsService.setSaveTypes(isExit, isQuickSave);
           this.isFormDirty = false;
           this.formSaving = false;
@@ -3093,6 +3095,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
           this.showForceSaveWindow();
         } else {
           this.inspectiondetailsform.patchValue({ 'fversion': response['fversion'] });
+          this.inspectiondetailsform.patchValue({ 'forcesave': 'false' });
 
           this.formSaveMsg = response['message'];
           this.formSaveMsgType = response['type'];

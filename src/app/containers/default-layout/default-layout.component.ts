@@ -7,6 +7,7 @@ import { Subscription } from "rxjs/Subscription";
 import { AppServeiceLoadStatusService } from "../../shared/app-service-load-status.service";
 import { FileUploadProgressService } from "../../shared/fileupload-progress.service";
 import { AppUtils } from '../../shared/app-utils';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -28,7 +29,7 @@ export class DefaultLayoutComponent implements OnInit, OnDestroy, AfterViewInit 
   public calendarDisplaying = false;
   public inspDtlDisplaying = false;
 
-  constructor(private httpService: HTTPService, private renderer: Renderer2, private appServeiceLoadStatusService: AppServeiceLoadStatusService, public fileUploadProgressService: FileUploadProgressService) {
+  constructor(private router :Router, private httpService: HTTPService, private renderer: Renderer2, private appServeiceLoadStatusService: AppServeiceLoadStatusService, public fileUploadProgressService: FileUploadProgressService) {
     this.alive = true;
     this.interval = 5000;
 
@@ -50,7 +51,12 @@ export class DefaultLayoutComponent implements OnInit, OnDestroy, AfterViewInit 
     let timer = TimerObservable.create(0, this.interval);
     timer.takeWhile(() => this.alive).subscribe(() => {
       this.subscription = this.httpService.getAppStatus().subscribe(
-        (response) => {
+        (response: Response) => {
+          //TODO - manojs
+          if (response['loggedin'] === 'false') {
+            this.router.navigate(['/logout']);
+          }
+
           this.renderer.removeClass(statusElem, 'alert-danger');
           this.renderer.addClass(statusElem, 'alert-success');
           statusElem.textContent = "Successful connection to the server!";

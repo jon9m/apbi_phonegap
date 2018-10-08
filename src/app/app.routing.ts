@@ -59,6 +59,11 @@ export const routes: Routes = [
         path: 'inspectiondtlform/:id',
         loadChildren: './views/inspection-dtl-form/inspection-dtl-form.module#InspectionDtlFormModule',
         data: { preload: true, key: "inspectiondtlform" }
+      },
+      {
+        path: 'inspectiondtlreloadform/:id',
+        loadChildren: './views/inspection-dtl-form/inspection-dtl-form.module#InspectionDtlFormModule',
+        data: { preload: true, key: "inspectiondtlform" }
       }
     ]
   }

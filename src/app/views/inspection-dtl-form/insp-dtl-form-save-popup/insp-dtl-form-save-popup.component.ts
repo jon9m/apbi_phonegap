@@ -43,13 +43,15 @@ export class InspDtlFormSavePopupComponent implements OnInit, OnDestroy {
         let bookingidelement: HTMLInputElement = document.getElementById('bookingid') as HTMLInputElement;
         let bookingId = bookingidelement.value;
         this.isFormLoading = false;
-
-        console.log("Reloading form with booking id ", bookingId);
-
         this.closePopup();
-        this.router.navigate(['/inspectiondtlform', bookingId]);
+
+        if (this.router.url.indexOf('inspectiondtlreloadform')) {
+          this.router.navigate(['/inspectiondtlform', bookingId]);
+        } else {
+          this.router.navigate(['/inspectiondtlreloadform', bookingId]);
+        }
       },
-      (error) => {
+      () => {
         this.isFormLoading = false;
       }
     );
