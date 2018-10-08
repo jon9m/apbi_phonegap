@@ -45,7 +45,7 @@ export class InspDtlFormSavePopupComponent implements OnInit, OnDestroy {
         this.isFormLoading = false;
         this.closePopup();
 
-        if (this.router.url.indexOf('inspectiondtlreloadform')) {
+        if (this.router.url.indexOf('inspectiondtlreloadform') >= 0) {
           this.router.navigate(['/inspectiondtlform', bookingId]);
         } else {
           this.router.navigate(['/inspectiondtlreloadform', bookingId]);
