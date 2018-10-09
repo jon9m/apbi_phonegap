@@ -25,7 +25,7 @@ INJECTED from /Users/vutuan/manoj/PHONEGAP_CLI/APBIInspector/platforms/android/a
 		INJECTED from /Users/vutuan/manoj/PHONEGAP_CLI/APBIInspector/platforms/android/app/src/main/AndroidManifest.xml
 		INJECTED from /Users/vutuan/manoj/PHONEGAP_CLI/APBIInspector/platforms/android/app/src/main/AndroidManifest.xml
 	android:versionName
-		ADDED from /Users/vutuan/manoj/PHONEGAP_CLI/APBIInspector/platforms/android/app/src/main/AndroidManifest.xml:2:74-102
+		ADDED from /Users/vutuan/manoj/PHONEGAP_CLI/APBIInspector/platforms/android/app/src/main/AndroidManifest.xml:2:75-102
 		INJECTED from /Users/vutuan/manoj/PHONEGAP_CLI/APBIInspector/platforms/android/app/src/main/AndroidManifest.xml
 		INJECTED from /Users/vutuan/manoj/PHONEGAP_CLI/APBIInspector/platforms/android/app/src/main/AndroidManifest.xml
 	android:hardwareAccelerated
@@ -33,7 +33,7 @@ INJECTED from /Users/vutuan/manoj/PHONEGAP_CLI/APBIInspector/platforms/android/a
 	xmlns:android
 		ADDED from /Users/vutuan/manoj/PHONEGAP_CLI/APBIInspector/platforms/android/app/src/main/AndroidManifest.xml:2:151-209
 	android:versionCode
-		ADDED from /Users/vutuan/manoj/PHONEGAP_CLI/APBIInspector/platforms/android/app/src/main/AndroidManifest.xml:2:46-73
+		ADDED from /Users/vutuan/manoj/PHONEGAP_CLI/APBIInspector/platforms/android/app/src/main/AndroidManifest.xml:2:46-74
 		INJECTED from /Users/vutuan/manoj/PHONEGAP_CLI/APBIInspector/platforms/android/app/src/main/AndroidManifest.xml
 		INJECTED from /Users/vutuan/manoj/PHONEGAP_CLI/APBIInspector/platforms/android/app/src/main/AndroidManifest.xml
 supports-screens

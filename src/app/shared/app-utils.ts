@@ -91,6 +91,7 @@ export class AppUtils {
         destElem.style.zIndex = '1000';
         destElem.style.top = posSrcPx;
         destElem.style.left = '47%';
+        destElem.style.marginRight = '15px';
 
         let offsetWidthHalf: number = destElem.offsetWidth / 2;
         offsetWidthHalf = Number(offsetWidthHalf.toFixed(0));
@@ -104,6 +105,7 @@ export class AppUtils {
         destElem.style.top = 'auto';
         destElem.style.left = 'auto';
         destElem.style.marginLeft = 'auto';
+        destElem.style.marginRight = 'auto';
     }
 
     public static findPos(obj) {

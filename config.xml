@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="au.com.seoinstitute.apbi.inspectorapp" version="1.0.13" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget android-versionCode="200000" id="au.com.seoinstitute.apbi.inspectorapp" version="2.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>APBIInspector</name>
     <description>
         SEO Institute of Australia
