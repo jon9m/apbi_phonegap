@@ -3150,14 +3150,14 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
 
   //Complete Form
   onFormComplete() {
-    console.log('onFormComplete');
+    // console.log('onFormComplete');
     let element: HTMLElement = document.getElementById('completeReportWarningButton') as HTMLElement;
     element.click();
   }
 
   @ViewChild('inspDtlFieldSet') inspDtlFieldSet: ElementRef;
   formComplete(status, onLoading) {
-    console.log('formComplete');
+    // console.log('formComplete');
     if (status === 'true') {
       if (this.isAdmin !== true) {
         this.adminCompleted = false;

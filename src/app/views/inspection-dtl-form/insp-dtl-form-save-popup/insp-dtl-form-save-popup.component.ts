@@ -24,13 +24,13 @@ export class InspDtlFormSavePopupComponent implements OnInit, OnDestroy {
   }
 
   saveForm() {
-    console.log("Save form");
+    // console.log("Save form");
     this.inspectionDetailsService.setInspectionDetailsSetForceSave();
     this.closePopup();
   }
 
   reloadForm() {
-    console.log("Reload form");
+    // console.log("Reload form");
     this.loadForm();
   }
 

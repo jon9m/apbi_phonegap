@@ -145,7 +145,7 @@ export class FileUploadComponentComponent implements OnInit, OnDestroy {
     this.fileUploadProgressService.setResizeState(this.file_name, false);
     this.fileUploadProgressService.setUploadError(this.file_name, false);
 
-    console.log(this.file_name);
+    // console.log(this.file_name);
 
     this.fileUploadSub = this.fileUploadService.fileUpload(fileToUpload, this.file_name, submittedData).subscribe(
       event => {

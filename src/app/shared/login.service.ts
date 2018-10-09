@@ -19,7 +19,7 @@ export class LoginService {
         this.isAdmin = this.loginResponse.role.includes('Admin');
         this.inspectionDetailsService.setAdminMode(this.isAdmin);
 
-        console.log("Is Admin " + this.isAdmin);
+        // console.log("Is Admin " + this.isAdmin);
     }
 
     getLoginResponse() {

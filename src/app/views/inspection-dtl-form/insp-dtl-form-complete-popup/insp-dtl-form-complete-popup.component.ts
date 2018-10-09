@@ -20,7 +20,7 @@ export class InspDtlFormCompletePopupComponent implements AfterViewInit, OnDestr
   ngAfterViewInit(): void {
     this.adminCompleteSubscription = this.inspectionDetailsService.adminCompleteSubject.subscribe(status => {
       this.adminCompleted = status.isComplete;
-      console.log(this.adminMode, this.adminCompleted);
+      // console.log(this.adminMode, this.adminCompleted);
     });
     this.adminMode = this.inspectionDetailsService.getAdminMode();
   }
