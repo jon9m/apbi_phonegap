@@ -204,9 +204,6 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
       console.log("reportId " + this.reportId);
       console.log("reportType " + this.reportType);
 
-      //TODO
-      // this.reportType = 6;
-
       //Initialize the form
       this.initForm();
 
@@ -3214,7 +3211,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
   }
 
   checkAndSetQuickItemValue(currelem) {
-    console.log(currelem);
+    // console.log(currelem);
     let reccomKey = this.getKeyForRecommendationObject(currelem);
     let currRecommKey = this.getKeyForCurrentRecommendationSelected();
 
@@ -3285,7 +3282,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
       reccomKey = this.getKeyForRecommendationObject(recommObj);
       currRecommKey = this.getKeyForCurrentRecommendationSelected();
 
-      console.log("reccomKey " + reccomKey, "currRecommKey " + currRecommKey);
+      // console.log("reccomKey " + reccomKey, "currRecommKey " + currRecommKey);
 
       if ((currRecommKey != null) && (reccomKey != null) && (currRecommKey === reccomKey)) {
         AppUtils.toggleDisableSelectElements(true, "select", this.recommQuickAddCurrentCheckItem.recommId);

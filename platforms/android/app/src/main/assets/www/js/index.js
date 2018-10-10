@@ -21,7 +21,7 @@ var app = {
     initialize: function() {
         document.addEventListener("deviceready", onDeviceReady, false);
         function onDeviceReady() {
-            //console.log(typeof navigator.camera);  //TODO
+            //console.log(typeof navigator.camera);
             //alert(navigator.camera);
         }
     }

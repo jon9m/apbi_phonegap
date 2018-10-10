@@ -52,7 +52,6 @@ export class DefaultLayoutComponent implements OnInit, OnDestroy, AfterViewInit 
     timer.takeWhile(() => this.alive).subscribe(() => {
       this.subscription = this.httpService.getAppStatus().subscribe(
         (response: Response) => {
-          //TODO - manojs
           if (response['loggedin'] === 'false') {
             this.router.navigate(['/logout']);
           }
