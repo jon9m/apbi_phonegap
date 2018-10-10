@@ -352,7 +352,8 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
             'comment': new FormControl(''),
             'typee': new FormControl(),
             'filename': new FormControl(),
-            'isquickitem': new FormControl()
+            'isquickitem': new FormControl(),
+            'id': new FormControl('')
           })
         );
       });
@@ -367,7 +368,8 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
             'comment': new FormControl(''),
             'typee': new FormControl(),
             'filename': new FormControl(),
-            'isquickitem': new FormControl()
+            'isquickitem': new FormControl(),
+            'id': new FormControl('')
           })
         );
       });
@@ -382,7 +384,8 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
             'comment': new FormControl(''),
             'typee': new FormControl(),
             'filename': new FormControl(),
-            'isquickitem': new FormControl()
+            'isquickitem': new FormControl(),
+            'id': new FormControl('')
           })
         );
       });
@@ -397,7 +400,8 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
             'comment': new FormControl(''),
             'typee': new FormControl(),
             'filename': new FormControl(),
-            'isquickitem': new FormControl()
+            'isquickitem': new FormControl(),
+            'id': new FormControl('')
           })
         );
       });
@@ -412,7 +416,8 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
             'comment': new FormControl(''),
             'typee': new FormControl(),
             'filename': new FormControl(),
-            'isquickitem': new FormControl()
+            'isquickitem': new FormControl(),
+            'id': new FormControl('')
           })
         );
       });
@@ -427,7 +432,8 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
             'comment': new FormControl(''),
             'typee': new FormControl(),
             'filename': new FormControl(),
-            'isquickitem': new FormControl()
+            'isquickitem': new FormControl(),
+            'id': new FormControl('')
           })
         );
       });
@@ -442,7 +448,8 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
             'comment': new FormControl(''),
             'typee': new FormControl(),
             'filename': new FormControl(),
-            'isquickitem': new FormControl()
+            'isquickitem': new FormControl(),
+            'id': new FormControl('')
           })
         );
       });
@@ -460,7 +467,8 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
             'comment': new FormControl(''),
             'typee': new FormControl(),
             'filename': new FormControl(),
-            'isquickitem': new FormControl()
+            'isquickitem': new FormControl(),
+            'id': new FormControl('')
           })
         );
       });
@@ -478,7 +486,8 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
             'comment': new FormControl(''),
             'typee': new FormControl(),
             'filename': new FormControl(),
-            'isquickitem': new FormControl()
+            'isquickitem': new FormControl(),
+            'id': new FormControl('')
           })
         );
       });
@@ -495,7 +504,8 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
             'comment': new FormControl(''),
             'typee': new FormControl(),
             'filename': new FormControl(),
-            'isquickitem': new FormControl()
+            'isquickitem': new FormControl(),
+            'id': new FormControl('')
           })
         );
       });
@@ -510,7 +520,8 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
             'comment': new FormControl(''),
             'typee': new FormControl(),
             'filename': new FormControl(),
-            'isquickitem': new FormControl()
+            'isquickitem': new FormControl(),
+            'id': new FormControl('')
           })
         );
       });
@@ -525,7 +536,8 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
             'comment': new FormControl(''),
             'typee': new FormControl(),
             'filename': new FormControl(),
-            'isquickitem': new FormControl()
+            'isquickitem': new FormControl(),
+            'id': new FormControl('')
           })
         );
       });
@@ -540,7 +552,8 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
             'comment': new FormControl(''),
             'typee': new FormControl(),
             'filename': new FormControl(),
-            'isquickitem': new FormControl()
+            'isquickitem': new FormControl(),
+            'id': new FormControl('')
           })
         );
       });
@@ -555,7 +568,8 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
             'comment': new FormControl(''),
             'typee': new FormControl(),
             'filename': new FormControl(),
-            'isquickitem': new FormControl()
+            'isquickitem': new FormControl(),
+            'id': new FormControl('')
           })
         );
       });
@@ -570,7 +584,8 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
             'comment': new FormControl(''),
             'typee': new FormControl(),
             'filename': new FormControl(),
-            'isquickitem': new FormControl()
+            'isquickitem': new FormControl(),
+            'id': new FormControl('')
           })
         );
       });
@@ -586,7 +601,8 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
             'comment': new FormControl(''),
             'typee': new FormControl(),
             'filename': new FormControl(),
-            'isquickitem': new FormControl()
+            'isquickitem': new FormControl(),
+            'id': new FormControl('')
           })
         );
       });
@@ -2939,9 +2955,11 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
     let recType = '-';
     let recDetails = '-';
     let isquickitem = false;
+    let optionId = '';
     if (this.recommQuickAddMode) {
       recType = this.recommQuickAddCurrentCheckItem.recType;
       recDetails = this.recommQuickAddCurrentCheckItem.recDetails;
+      optionId = this.recommQuickAddCurrentCheckItem.id;
       isquickitem = true;
     }
 
@@ -2952,11 +2970,12 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
       'comment': new FormControl(''),
       'typee': new FormControl(typee),
       'filename': new FormControl(fileName),
-      'isquickitem': new FormControl(isquickitem)
+      'isquickitem': new FormControl(isquickitem),
+      'id': new FormControl(optionId)
     }));
   }
 
-  onAddRecommendationsQuick(recommendationType, typee, recType, recDetail) {
+  onAddRecommendationsQuick(recommendationType, typee, recType, recDetail, id) {
     let len = new Date().getTime();
     let typeeLower = (<string>typee).toLowerCase();
     let fileName = 'rec-file-' + typeeLower + '-' + len;
@@ -2969,7 +2988,8 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
       'comment': new FormControl(''),
       'typee': new FormControl(typee),
       'filename': new FormControl(fileName),
-      'isquickitem': new FormControl(true)
+      'isquickitem': new FormControl(true),
+      'id': new FormControl(id)
     }));
   }
 
@@ -3220,7 +3240,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
 
     this.showPopupOverlay();
     if (!this.hasRecommendationAddedForItem(recommId)) {
-      this.onAddRecommendationsQuick(recommType, typee, this.recommQuickAddCurrentCheckItem.recType, this.recommQuickAddCurrentCheckItem.recDetails);
+      this.onAddRecommendationsQuick(recommType, typee, this.recommQuickAddCurrentCheckItem.recType, this.recommQuickAddCurrentCheckItem.recDetails, this.recommQuickAddCurrentCheckItem.id);
     }
 
     setTimeout(() => {
@@ -3231,7 +3251,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
   getKeyForRecommendationObject(recommObj) {
     let key = null;
     if (recommObj && recommObj.value) {
-      key = recommObj.value.typee + "_" + recommObj.value.item + "_" + recommObj.value.recdetail + "_" + recommObj.value.rectype;
+      key = recommObj.value.typee + "_" + recommObj.value.item + "_" + recommObj.value.recdetail + "_" + recommObj.value.rectype + "_" + recommObj.value.id;
       if (key) {
         key = key.replace(/\s+/g, '');
         key = key.toLowerCase();
@@ -3244,7 +3264,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
     let key = null;
     let reccommUcrrentItem = this.recommQuickAddCurrentCheckItem;
     if (reccommUcrrentItem) {
-      key = reccommUcrrentItem.typee + "_" + reccommUcrrentItem.recommType_short + "_" + reccommUcrrentItem.recDetails + "_" + reccommUcrrentItem.recType;
+      key = reccommUcrrentItem.typee + "_" + reccommUcrrentItem.recommType_short + "_" + reccommUcrrentItem.recDetails + "_" + reccommUcrrentItem.recType + "_" + reccommUcrrentItem.id;
       if (key) {
         key = key.replace(/\s+/g, '');
         key = key.toLowerCase();
@@ -3264,6 +3284,8 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
 
       reccomKey = this.getKeyForRecommendationObject(recommObj);
       currRecommKey = this.getKeyForCurrentRecommendationSelected();
+
+      console.log("reccomKey " + reccomKey, "currRecommKey " + currRecommKey);
 
       if ((currRecommKey != null) && (reccomKey != null) && (currRecommKey === reccomKey)) {
         AppUtils.toggleDisableSelectElements(true, "select", this.recommQuickAddCurrentCheckItem.recommId);
