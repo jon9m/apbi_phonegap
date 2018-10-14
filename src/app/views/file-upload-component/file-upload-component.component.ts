@@ -241,6 +241,8 @@ export class FileUploadComponentComponent implements OnInit, OnDestroy {
       allowEdit: false,
       correctOrientation: true,  //Corrects Android orientation quirks
 
+      saveToPhotoAlbum: true,    // save a copy
+
       targetHeight:1920,
       targetWidth:800
     }

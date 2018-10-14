@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="au.com.seoinstitute.apbi.inspectorapp"
     android:hardwareAccelerated="true"
-    android:versionCode="10013"
-    android:versionName="1.0.13" >
+    android:versionCode="200001"
+    android:versionName="2.0.0" >
 
     <uses-sdk
         android:minSdkVersion="16"
