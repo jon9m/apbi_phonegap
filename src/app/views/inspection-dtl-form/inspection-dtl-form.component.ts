@@ -2890,6 +2890,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
       case this.insp_type_new_building_inspection_completion_stage: {   //12
         AppUtils.addControlsToForm(this.inspectiondetailsform, visual_building_inspection_form);
         AppUtils.addControlsToForm(this.inspectiondetailsform, services_connected_form);
+        AppUtils.addControlsToForm(this.inspectiondetailsform, furnished_and_extension_form);
         AppUtils.addControlsToForm(this.inspectiondetailsform, smoke_detectors_form);
         AppUtils.addControlsToForm(this.inspectiondetailsform, smoke_detectors_fitted_form);
       }
@@ -2908,7 +2909,8 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
     'visual_building_inspection_form': [1, 2, 3, 6, 12],
     'services_connected_form': [1, 2, 3, 6, 12],
     'smoke_detectors_form': [1, 2, 3, 5, 6, 12],
-    'furnished_and_extension_form': [1, 2, 3, 5, 6, 7],
+    'furnished_form': [1, 2, 3, 5, 6, 7, 12],
+    'extension_form': [1, 2, 3, 5, 6, 7],
     'smoke_detectors_fitted_form': [1, 2, 3, 6],
     'visual_timber_pest_inspection_form': [5, 6],
     'dilapidation_inspection_form': [7],

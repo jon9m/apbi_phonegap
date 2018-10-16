@@ -631,7 +631,7 @@
       </div>
     </div>
 
-    <ng-template [ngIf]="reportType != null && isFormDisplay('furnished_and_extension_form')">
+    <ng-template [ngIf]="reportType != null && isFormDisplay('furnished_form')">
       <div class="card" [tabIndexItem]="'Was the property furnished at time of inspection'">
         <div class="card-header">
           <h5 class="black mb-0"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;<strong>Was the property furnished at time of inspection?</strong>
@@ -679,7 +679,7 @@
       </div>
     </ng-template>
 
-    <ng-template [ngIf]="reportType != null && isFormDisplay('furnished_and_extension_form')">
+    <ng-template [ngIf]="reportType != null && isFormDisplay('extension_form')">
       <div class="card" [tabIndexItem]="'Was there evidence of any extensions at time of inspection'">
         <div class="card-header">
           <h5 class="black mb-0"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;<strong>Was there evidence of any extensions at time of inspection?</strong>
