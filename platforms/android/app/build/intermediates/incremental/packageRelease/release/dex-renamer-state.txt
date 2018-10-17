@@ -1,4 +1,4 @@
-#Tue Oct 16 12:19:23 AEDT 2018
+#Tue Oct 16 16:42:06 AEDT 2018
 base.0=/Users/vutuan/manoj/PHONEGAP_CLI/APBIInspector/platforms/android/app/build/intermediates/transforms/dex/release/0
 renamed.0=classes.dex
 file.0=/Users/vutuan/manoj/PHONEGAP_CLI/APBIInspector/platforms/android/app/build/intermediates/transforms/dex/release/0/classes.dex

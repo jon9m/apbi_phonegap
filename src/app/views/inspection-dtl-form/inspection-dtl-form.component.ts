@@ -3231,7 +3231,9 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
     let currSetItem = this.inspectiondetailsform.get(this.recommQuickAddCurrentCheckItem.id);
     if (currSetItem && currSetItem.value === true) {
       this.recommQuickAddMode = false;
-      this.onClickRemoveQuickRecommendations();
+      if (this.hasRecommendationAddedForItem(recommId)) {
+        this.onClickRemoveQuickRecommendations();
+      }
       return;
     } else {
       this.recommQuickAddMode = true;
@@ -3321,6 +3323,21 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
         }
       }
     }
+  }
+
+  onRecommQuickViewNoComments(recommId) {
+    this.recommQuickAddMode = false;
+    this.removeRecommendationsFromCurrentList(recommId);
+
+    let currSetItem = this.inspectiondetailsform.get(this.recommQuickAddCurrentCheckItem.id);
+    if (currSetItem) {
+      currSetItem.setValue(true);
+    }
+
+    this.recommQuickAddCurrentCheckItem = null;
+    AppUtils.resetPosition(recommId);
+
+    this.hidePopupOverlay();
   }
 
   onRecommQuickViewCancel(recommId) {

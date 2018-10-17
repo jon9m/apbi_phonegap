@@ -8,6 +8,6 @@ public final class BuildConfig {
   public static final String APPLICATION_ID = "au.com.seoinstitute.apbi.inspectorapp";
   public static final String BUILD_TYPE = "release";
   public static final String FLAVOR = "";
-  public static final int VERSION_CODE = 200003;
-  public static final String VERSION_NAME = "2.0.2";
+  public static final int VERSION_CODE = 200004;
+  public static final String VERSION_NAME = "2.0.3";
 }
