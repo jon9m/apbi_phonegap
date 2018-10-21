@@ -139,6 +139,7 @@ export class MycalendarComponent implements OnInit, OnDestroy, AfterViewInit, Af
         this.calendarOptions = {
           editable: true,
           eventLimit: false,
+          contentHeight: 'auto',
           header: {
             left: 'prev,next today',
             center: 'title',
