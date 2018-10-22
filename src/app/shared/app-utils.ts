@@ -1,4 +1,5 @@
 import { FormGroup, FormArray, FormControl } from "@angular/forms";
+declare var navigator: any;
 
 export class AppUtils {
     static isDisplayed: boolean = true;
@@ -90,13 +91,21 @@ export class AppUtils {
         destElem.style.position = 'absolute';
         destElem.style.zIndex = '1000';
         destElem.style.top = posSrcPx;
-        destElem.style.left = '47%';
-        destElem.style.marginRight = '15px';
 
-        let offsetWidthHalf: number = destElem.offsetWidth / 2;
-        offsetWidthHalf = Number(offsetWidthHalf.toFixed(0));
-        offsetWidthHalf = offsetWidthHalf * -1;
-        destElem.style.marginLeft = offsetWidthHalf + 'px';
+        if (this.isMobile()) {
+            destElem.style.marginRight = '30px';
+        } else {
+            let formViewHalfWidth = (<HTMLElement>document.querySelector('#pagecontentview')).offsetWidth / 2;
+            let quickViewHalfWidth = destElem.offsetWidth / 2;
+            destElem.style.marginLeft = (formViewHalfWidth - quickViewHalfWidth).toFixed(0) + 'px';
+        }
+    }
+
+    public static isMobile() {
+        if (navigator.camera) { //Check!
+            return true;
+        }
+        return false;
     }
 
     public static removeStyleFromDestination(destElem) {
