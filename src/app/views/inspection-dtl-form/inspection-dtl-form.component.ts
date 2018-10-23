@@ -3225,7 +3225,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
   //Show Recommendations
   showRecommendations(event, recommId, recommType_short, id, itemType, itemValue, recommType, typee) {
     this.recommQuickAddCurrentCheckItem = { id: id, recType: itemValue, recommType_short: recommType_short, recDetails: itemType, recommType: recommType, typee: typee, recommId: recommId };
-    console.log(this.recommQuickAddCurrentCheckItem);
+    //console.log(this.recommQuickAddCurrentCheckItem);
 
     //If already checked
     let currSetItem = this.inspectiondetailsform.get(this.recommQuickAddCurrentCheckItem.id);
@@ -3335,6 +3335,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
     }
 
     this.recommQuickAddCurrentCheckItem = null;
+    AppUtils.toggleDisableSelectElements(false, "select", recommId);
     AppUtils.resetPosition(recommId);
 
     this.hidePopupOverlay();
@@ -3350,6 +3351,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
     }
 
     this.recommQuickAddCurrentCheckItem = null;
+    AppUtils.toggleDisableSelectElements(false, "select", recommId);
     AppUtils.resetPosition(recommId);
 
     this.hidePopupOverlay();

@@ -77,6 +77,13 @@ export class AppUtils {
 
         //styles
         this.addStyleToDestination(destElem, posSrcPx);
+
+        //Scrol checkbox to top 
+        window.scroll({
+            left: 0,
+            behavior: "smooth",  //smooth, auto
+            top: +posSrc - 10
+        });
     }
 
     public static resetPosition(destid) {
