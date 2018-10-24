@@ -155,7 +155,7 @@ export class AppUtils {
     }
 
     public static getNumberForItemValue(itemValue): number {
-        let numbers = ['One', 'Two', 'Three', 'Four', 'Five'];
+        let numbers = ['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven'];
         return numbers.indexOf(itemValue);
     }
 
