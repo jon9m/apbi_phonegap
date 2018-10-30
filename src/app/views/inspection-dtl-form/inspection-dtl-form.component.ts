@@ -92,9 +92,10 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
   insp_type_new_building_inspection_lockup_stage;
   insp_type_new_building_inspection_completion_stage;
   insp_type_new_building_inspection_4_stages_package;
+  insp_type_warranty_defect_inspection;
 
   recommQuickAddMode: boolean = false;
-  recommQuickAddCurrentCheckItem: { id: '', recType: '', recommType_short: '', recDetails: '', recommType: '', typee: '', recommId: '', subitem1:'' };
+  recommQuickAddCurrentCheckItem: { id: '', recType: '', recommType_short: '', recDetails: '', recommType: '', typee: '', recommId: '', subitem1: '' };
 
   popupOverlay: boolean = false;
   isAdmin: boolean = false;
@@ -175,6 +176,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
     this.insp_type_new_building_inspection_lockup_stage = AppGlobal.INSP_TYPE_NEW_BUILDING_INSPECTION_LOCKUP_STAGE;
     this.insp_type_new_building_inspection_completion_stage = AppGlobal.INSP_TYPE_NEW_BUILDING_INSPECTION_COMPLETION_STAGE;
     this.insp_type_new_building_inspection_4_stages_package = AppGlobal.INSP_TYPE_NEW_BUILDING_INSPECTION_4_STAGES_PACKAGE;
+    this.insp_type_warranty_defect_inspection = AppGlobal.INSP_TYPE_WARRANTY_DEFECT_INSPECTION;
 
     this.formVersionSubscription = this.inspectionDetailsService.formVersionForceSaveSubject.subscribe(status => {
       this.onSave(status.isSaveExit, status.isQuickSave);
@@ -3533,6 +3535,14 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
         //Not available!!!
       }
         break;
+      case this.insp_type_warranty_defect_inspection: {                 //14 same as 1
+        AppUtils.addControlsToForm(this.inspectiondetailsform, visual_building_inspection_form);
+        AppUtils.addControlsToForm(this.inspectiondetailsform, services_connected_form);
+        AppUtils.addControlsToForm(this.inspectiondetailsform, smoke_detectors_form);
+        AppUtils.addControlsToForm(this.inspectiondetailsform, furnished_and_extension_form);
+        AppUtils.addControlsToForm(this.inspectiondetailsform, smoke_detectors_fitted_form);
+      }
+        break;
       default: {
 
       }
@@ -3540,12 +3550,12 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
   }
 
   formsMapper = {
-    'visual_building_inspection_form': [1, 2, 3, 6, 12],
-    'services_connected_form': [1, 2, 3, 6, 12],
-    'smoke_detectors_form': [1, 2, 3, 5, 6, 12],
-    'furnished_form': [1, 2, 3, 5, 6, 7, 12],
-    'extension_form': [1, 2, 3, 5, 6, 7],
-    'smoke_detectors_fitted_form': [1, 2, 3, 6],
+    'visual_building_inspection_form': [1, 2, 3, 6, 12, 14],
+    'services_connected_form': [1, 2, 3, 6, 12, 14],
+    'smoke_detectors_form': [1, 2, 3, 5, 6, 12, 14],
+    'furnished_form': [1, 2, 3, 5, 6, 7, 12, 14],
+    'extension_form': [1, 2, 3, 5, 6, 7, 14],
+    'smoke_detectors_fitted_form': [1, 2, 3, 6, 14],
     'visual_timber_pest_inspection_form': [5, 6],
     'dilapidation_inspection_form': [7],
     'building_age': [12],

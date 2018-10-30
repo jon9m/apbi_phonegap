@@ -35,6 +35,7 @@ export class AppGlobal {
     public static INSP_TYPE_NEW_BUILDING_INSPECTION_LOCKUP_STAGE = 11;         //New Building Inspection - Lockup Stage
     public static INSP_TYPE_NEW_BUILDING_INSPECTION_COMPLETION_STAGE = 12;     //New Building Inspection - Completion Stage
     public static INSP_TYPE_NEW_BUILDING_INSPECTION_4_STAGES_PACKAGE = 13;     //New Building Inspection - 4 Stages Package
+    public static INSP_TYPE_WARRANTY_DEFECT_INSPECTION = 14;                   //Warranty (defect) inspection
 
 
     //Messages

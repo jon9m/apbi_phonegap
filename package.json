@@ -15,7 +15,9 @@
         "test": "ng test",
         "lint": "ng lint",
         "e2e": "ng e2e",
-        "bundle-report": "webpack-bundle-analyzer dist/stats.json"
+        "bundle-report": "webpack-bundle-analyzer dist/stats.json",
+        "build-prod": "node --max_old_space_size=8000 ./node_modules/@angular/cli/bin/ng build --prod",
+        "build-prod-android": "node --max_old_space_size=8000 ./node_modules/@angular/cli/bin/ng build --prod --output-path=www"
     },
     "private": true,
     "dependencies": {

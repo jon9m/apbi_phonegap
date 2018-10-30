@@ -156,7 +156,10 @@ export class AppUtils {
 
     public static getNumberForItemValue(itemValue): number {
         let numbers = ['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven'];
-        return numbers.indexOf(itemValue);
+        let names = ['Studio'];
+        let selectedIndices = [numbers.indexOf(itemValue), names.indexOf(itemValue)];
+
+        return Math.max(...selectedIndices);
     }
 
     public static toggleDisableSelectElements(disable: boolean, elType: string, recommPopupId: string) {
