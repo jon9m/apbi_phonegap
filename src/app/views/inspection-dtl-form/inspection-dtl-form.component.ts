@@ -3761,7 +3761,11 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
 
           this.showForceSaveWindow();
         } else {
-          this.inspectiondetailsform.patchValue({ 'fversion': response['fversion'] });
+
+          if (response['fversion'] && response['fversion'] !== 'null') {
+            this.inspectiondetailsform.patchValue({ 'fversion': response['fversion'] });
+          }
+
           this.inspectiondetailsform.patchValue({ 'forcesave': 'false' });
 
           this.formSaveMsg = response['message'];

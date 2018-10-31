@@ -49,6 +49,8 @@ export class FileUploadComponentComponent implements OnInit, OnDestroy {
   serverResponse: any;
   rgbString: string = '#20a8d8';
   file_name = "";
+  uploadError: boolean = false;
+  cameraUsed: boolean = false;
 
   currInputElemProgress: any;
 
@@ -72,6 +74,10 @@ export class FileUploadComponentComponent implements OnInit, OnDestroy {
   }
 
   onFileChange(event) {
+    if (this.cameraUsed == false) {
+      this.currEventObj = null;
+    }
+
     this.uploadProgress = 0;
 
     if (this.fileName) {
@@ -113,12 +119,12 @@ export class FileUploadComponentComponent implements OnInit, OnDestroy {
           const base64str = img1.data
           const imgExt = img1.ext
           const file = Compress.convertBase64ToFile(base64str, imgExt)
-          this.uploadCurrentFile(file, submittedData);
+          this.uploadCurrentFile(file, submittedData, progressId);
         }).catch(err => {
           console.log('Image resizing failed, using original image', err);
           console.log(submittedData);
 
-          this.uploadCurrentFile(fileToUpload, submittedData);
+          this.uploadCurrentFile(fileToUpload, submittedData, progressId);
         });
       };
     }
@@ -141,9 +147,10 @@ export class FileUploadComponentComponent implements OnInit, OnDestroy {
     }
   }
 
-  private uploadCurrentFile(fileToUpload, submittedData) {
+  private uploadCurrentFile(fileToUpload, submittedData, progressId) {
+    this.uploadError = false;
     this.fileUploadProgressService.setResizeState(this.file_name, false);
-    this.fileUploadProgressService.setUploadError(this.file_name, false);
+    this.fileUploadProgressService.setUploadError(this.file_name, false, progressId);
 
     // console.log(this.file_name);
 
@@ -152,7 +159,8 @@ export class FileUploadComponentComponent implements OnInit, OnDestroy {
         this.handleProgress(event, this.index, this.recommendationType);
       },
       () => {
-        this.fileUploadProgressService.setUploadError(this.file_name, true);
+        this.uploadError = true;
+        this.fileUploadProgressService.setUploadError(this.file_name, true, progressId);
       });
   }
 
@@ -190,6 +198,9 @@ export class FileUploadComponentComponent implements OnInit, OnDestroy {
   resetAll(event) {
     this.uploadProgress = 0;
     event.target.value = '';
+
+    this.currEventObj = null;
+    this.cameraUsed = false;
   }
 
   setRgbString() {
@@ -243,8 +254,8 @@ export class FileUploadComponentComponent implements OnInit, OnDestroy {
 
       saveToPhotoAlbum: true,    // save a copy
 
-      targetHeight:1920,
-      targetWidth:800
+      targetHeight: 1920,
+      targetWidth: 800
     }
     return options;
   }
@@ -256,15 +267,31 @@ export class FileUploadComponentComponent implements OnInit, OnDestroy {
     return false;
   }
 
+  hasError() {
+    return this.uploadError;
+  }
+
+  reUpload(inputId) {
+    if (this.cameraUsed) {
+      this.onFileChange(this.currEventObj);
+    } else {
+      document.querySelector('#file-' + inputId).dispatchEvent(new Event('change'));
+    }
+  }
+
   takePhoto() {
+    this.cameraUsed = true;
     if (navigator.camera) {
       var options = this.setOptions();
       navigator.camera.getPicture(this.onPhotoDataSuccess, this.onFail, options);
     }
   }
   onFail = (message) => {
+    this.currEventObj = null;
     console.log('Failed because: ' + message);
   }
+
+  currEventObj: any = null;
 
   onPhotoDataSuccess = (imageUri) => {
     let eventObj = {
@@ -276,6 +303,7 @@ export class FileUploadComponentComponent implements OnInit, OnDestroy {
     window.resolveLocalFileSystemURL(imageUri, (entry) => {
       entry.file((file) => {
 
+        this.currEventObj = null;
         var filename = file.name;
 
         var reader = new FileReader();
@@ -284,9 +312,9 @@ export class FileUploadComponentComponent implements OnInit, OnDestroy {
           var fd = new FormData();
           fd.append('attachment', imgBlob, filename);
           fd.append('filename', filename);
-          //console.log(fd);
 
           eventObj.target.files[0] = fd.get('attachment');
+          this.currEventObj = eventObj;
           this.onFileChange(eventObj);
         };
         reader.readAsArrayBuffer(file);
