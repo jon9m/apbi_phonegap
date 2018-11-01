@@ -21,7 +21,17 @@ export class FileUploadProgressNavComponentComponent implements OnInit {
     return AppUtils.isDisplayed;
   }
 
-  scrollToPosition(progressId) {
+  scrollToPosition(progressId, event) {
+    var liEls: NodeListOf<HTMLElement> = document.querySelectorAll('.progressnavli');
+    for (let i = liEls.length - 1; i >= 0; i--) {
+      if ((liEls[i]) && liEls[i].classList.contains('progressnavliselected')) {
+        liEls[i].classList.remove('progressnavliselected')
+      }
+    }
+    if ((event.target) && (event.target.parentNode) && (event.target.parentNode.classList) && (event.target.parentNode.classList.contains('progressnavli'))) {
+      event.target.parentNode.classList.add('progressnavliselected');
+    }
+
     var destElem = <HTMLElement>document.querySelector(progressId);
     var posSrc = AppUtils.findPos(destElem);
 

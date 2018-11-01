@@ -1,6 +1,6 @@
 <div *ngIf="getDisplayed()" class="fileuploadstats">
   <ul class="progressnavul">
-    <li *ngFor="let fileInfo of fileUploadProgressService.getValues()" class="progressnavli" (click)="scrollToPosition(fileInfo.progressId)">
+    <li *ngFor="let fileInfo of fileUploadProgressService.getValues()" class="progressnavli" (click)="scrollToPosition(fileInfo.progressId, $event)">
       <div>
         <span>{{fileInfo.realName}}</span>&nbsp;
         <span class="pull-right">{{fileInfo.progress}}%</span>
