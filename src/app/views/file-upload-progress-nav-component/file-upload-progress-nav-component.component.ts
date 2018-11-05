@@ -28,8 +28,8 @@ export class FileUploadProgressNavComponentComponent implements OnInit {
         liEls[i].classList.remove('progressnavliselected')
       }
     }
-    if ((event.target) && (event.target.parentNode) && (event.target.parentNode.classList) && (event.target.parentNode.classList.contains('progressnavli'))) {
-      event.target.parentNode.classList.add('progressnavliselected');
+    if ((event.currentTarget) && (event.currentTarget) && (event.currentTarget.classList) && (event.currentTarget.classList.contains('progressnavli'))) {
+      event.currentTarget.classList.add('progressnavliselected');
     }
 
     var destElem = <HTMLElement>document.querySelector(progressId);
