@@ -316,6 +316,19 @@ export class AppGlobal {
         "Trench Mesh & Steel Reinforcing"
     ];
 
+    public static Pre_floor: string[] = [
+        "Build Orientation",
+        "Site Gradient",
+        "Footings",
+        "Piers/Stumps",
+        "Foundation walls",
+        "Damp proof course",
+        "Bearers",
+        "Joists",
+        "Blocking",
+        "Fixings"
+    ];
+
     public static Pre_slab_services: string[] = [
         "Drainage",
         "Plumbing",

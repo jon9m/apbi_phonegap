@@ -62,6 +62,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
   lockup_internal: string[] = [];
   pre_slab: string[] = [];
   pre_slab_services: string[] = [];
+  pre_floor: string[] = [];
 
   formSaving: boolean = false;
   formSaveMsg: string = '';
@@ -162,6 +163,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
     this.lockup_internal = AppGlobal.Lockup_internal;
     this.pre_slab = AppGlobal.Pre_slab;
     this.pre_slab_services = AppGlobal.Pre_slab_services;
+    this.pre_floor = AppGlobal.Pre_floor;
 
     this.insp_type_pre_purchase_building_inspection = AppGlobal.INSP_TYPE_PRE_PURCHASE_BUILDING_INSPECTION;
     this.insp_type_pre_sale_building_inspection = AppGlobal.INSP_TYPE_PRE_SALE_BUILDING_INSPECTION;
@@ -289,6 +291,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
     let lockup_recommendations_internal_array = [];
     let new_slab_recommendations_array = [];
     let new_slab_services_recommendations_array = [];
+    let pre_floor_recommendations_array = [];
 
     if (this.inspectiondetails && this.inspectiondetails.hallways_recommendations_list) {
       hallways_recommendations_array = this.inspectiondetails.hallways_recommendations_list;
@@ -338,6 +341,9 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
     }
     if (this.inspectiondetails && this.inspectiondetails.preslab_services_recommendations_list) {
       new_slab_services_recommendations_array = this.inspectiondetails.preslab_services_recommendations_list;
+    }
+    if (this.inspectiondetails && this.inspectiondetails.pre_floor_recommendations_list) {
+      pre_floor_recommendations_array = this.inspectiondetails.pre_floor_recommendations_list;
     }
 
     //if (this.isFormDisplay('visual_building_inspection_form')) {
@@ -608,6 +614,24 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
     if ((new_slab_services_recommendations_array != null) && (typeof new_slab_services_recommendations_array.forEach === 'function')) {
       new_slab_services_recommendations_array.forEach(() => {
         (<FormArray>this.inspectiondetailsform.get('preslab_services_recommendations_list')).push(
+          new FormGroup({
+            'item': new FormControl('-'),
+            'subitem1': new FormControl('-'),
+            'rectype': new FormControl('-'),
+            'recdetail': new FormControl('-'),
+            'comment': new FormControl(''),
+            'typee': new FormControl(),
+            'filename': new FormControl(),
+            'isquickitem': new FormControl(),
+            'id': new FormControl('')
+          })
+        );
+      });
+    }
+
+    if ((pre_floor_recommendations_array != null) && (typeof pre_floor_recommendations_array.forEach === 'function')) {
+      pre_floor_recommendations_array.forEach(() => {
+        (<FormArray>this.inspectiondetailsform.get('pre_floor_recommendations_list')).push(
           new FormGroup({
             'item': new FormControl('-'),
             'subitem1': new FormControl('-'),
@@ -3394,6 +3418,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
       '1058': '',
       '1059': '',
       '1060': '',
+      'stagetype': '',
 
       'dwelling_type_1': '',
       'dwelling_type_2': '',
@@ -3404,7 +3429,8 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
       'plans': '',
       'plans_comment': '',
       'new_slab_recommendations_list': [],
-      'preslab_services_recommendations_list': []
+      'preslab_services_recommendations_list': [],
+      'pre_floor_recommendations_list': []
     }
 
     let newbuilding_completion_form = {
@@ -3702,6 +3728,10 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
           break;
         case 'new_slab_recommendations_list': {
           item = 'Pre-Slab';
+        }
+          break;
+        case 'pre_floor_recommendations_list': {
+          item = 'Pre-Floor';
         }
           break;
         case 'preslab_services_recommendations_list': {
@@ -4035,6 +4065,14 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
     let noOfEnsuites = this.inspectiondetailsform.get(itemType).value;
 
     if (itemNumber <= AppUtils.getNumberForItemValue(noOfEnsuites)) {
+      return true;
+    }
+    return false;
+  }
+
+  showFormSection(optionItem, optionValue) {
+    let optionSelected = (this.inspectiondetailsform.get(optionItem) ? this.inspectiondetailsform.get(optionItem).value : null);
+    if (optionSelected === optionValue) {
       return true;
     }
     return false;
