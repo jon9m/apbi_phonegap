@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, QueryList, AfterViewInit } from '@angular/core';
+import { Component, OnDestroy, AfterViewInit } from '@angular/core';
 import { AppServeiceLoadStatusService } from '../../../shared/app-service-load-status.service';
 import { Subscription } from 'rxjs/Subscription';
 import { TabIndexDirective } from '../../../shared/TabIndexModule/tabItem.directive';
@@ -14,6 +14,7 @@ import { TabIndexDirective } from '../../../shared/TabIndexModule/tabItem.direct
 export class TabIndexComponent implements AfterViewInit, OnDestroy {
 
   public currTabs: TabIndexDirective[];
+  tabIndexReloadSubscription: Subscription;
 
   constructor(private appServeiceLoadStatusService: AppServeiceLoadStatusService) {
   }
@@ -22,9 +23,18 @@ export class TabIndexComponent implements AfterViewInit, OnDestroy {
     if (this.appServeiceLoadStatusService.tabIndexList) {
       this.currTabs = this.appServeiceLoadStatusService.tabIndexList.toArray();
     }
+
+    this.tabIndexReloadSubscription = this.appServeiceLoadStatusService.tabIndexReloadSubject.subscribe((updatedIndex) => {
+      if (updatedIndex) {
+        this.currTabs = updatedIndex.toArray();
+      }
+    });
   }
 
   ngOnDestroy(): void {
+    if (this.tabIndexReloadSubscription != null) {
+      this.tabIndexReloadSubscription.unsubscribe();
+    }
   }
 
   onSelectTab(event) {

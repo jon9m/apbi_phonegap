@@ -21,17 +21,17 @@ INJECTED from /Users/vutuan/manoj/PHONEGAP_CLI/APBIInspector/platforms/android/a
 INJECTED from /Users/vutuan/manoj/PHONEGAP_CLI/APBIInspector/platforms/android/app/src/main/AndroidManifest.xml:2:1-24:12
 INJECTED from /Users/vutuan/manoj/PHONEGAP_CLI/APBIInspector/platforms/android/app/src/main/AndroidManifest.xml:2:1-24:12
 	package
-		ADDED from /Users/vutuan/manoj/PHONEGAP_CLI/APBIInspector/platforms/android/app/src/main/AndroidManifest.xml:2:103-150
+		ADDED from /Users/vutuan/manoj/PHONEGAP_CLI/APBIInspector/platforms/android/app/src/main/AndroidManifest.xml:2:104-151
 		INJECTED from /Users/vutuan/manoj/PHONEGAP_CLI/APBIInspector/platforms/android/app/src/main/AndroidManifest.xml
 		INJECTED from /Users/vutuan/manoj/PHONEGAP_CLI/APBIInspector/platforms/android/app/src/main/AndroidManifest.xml
 	android:versionName
-		ADDED from /Users/vutuan/manoj/PHONEGAP_CLI/APBIInspector/platforms/android/app/src/main/AndroidManifest.xml:2:75-102
+		ADDED from /Users/vutuan/manoj/PHONEGAP_CLI/APBIInspector/platforms/android/app/src/main/AndroidManifest.xml:2:75-103
 		INJECTED from /Users/vutuan/manoj/PHONEGAP_CLI/APBIInspector/platforms/android/app/src/main/AndroidManifest.xml
 		INJECTED from /Users/vutuan/manoj/PHONEGAP_CLI/APBIInspector/platforms/android/app/src/main/AndroidManifest.xml
 	android:hardwareAccelerated
 		ADDED from /Users/vutuan/manoj/PHONEGAP_CLI/APBIInspector/platforms/android/app/src/main/AndroidManifest.xml:2:11-45
 	xmlns:android
-		ADDED from /Users/vutuan/manoj/PHONEGAP_CLI/APBIInspector/platforms/android/app/src/main/AndroidManifest.xml:2:151-209
+		ADDED from /Users/vutuan/manoj/PHONEGAP_CLI/APBIInspector/platforms/android/app/src/main/AndroidManifest.xml:2:152-210
 	android:versionCode
 		ADDED from /Users/vutuan/manoj/PHONEGAP_CLI/APBIInspector/platforms/android/app/src/main/AndroidManifest.xml:2:46-74
 		INJECTED from /Users/vutuan/manoj/PHONEGAP_CLI/APBIInspector/platforms/android/app/src/main/AndroidManifest.xml

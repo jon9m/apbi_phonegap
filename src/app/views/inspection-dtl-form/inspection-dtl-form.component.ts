@@ -79,6 +79,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
   private formVersionSubscription: Subscription;
   private formCompleteSubscription: Subscription;
   private removeQuickRecommSubscription: Subscription;
+  private tabIndexRelaodSubscription: Subscription;
 
   insp_type_pre_purchase_building_inspection;
   insp_type_pre_sale_building_inspection;
@@ -133,6 +134,12 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
       } else {
         this.inspectionDetailsService.unsetFormComplete(true);
       }
+    }
+
+    if (this.tabs && this.tabs.changes) {
+      this.tabIndexRelaodSubscription = this.tabs.changes.subscribe((changes) => {
+        this.appServeiceLoadStatusService.updateTabQueryList(changes);
+      });
     }
   }
 
@@ -267,6 +274,9 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
     }
     if (this.removeQuickRecommSubscription != null) {
       this.removeQuickRecommSubscription.unsubscribe();
+    }
+    if (this.tabIndexRelaodSubscription != null) {
+      this.tabIndexRelaodSubscription.unsubscribe();
     }
 
     this.fileUploadProgressService.clearMap();

@@ -17,8 +17,9 @@ export class AppServeiceLoadStatusService {
     public calendarDisplaySubject = new Subject<boolean>();
     public calendarSearchSubject = new Subject<string>();
     public inspDtlFormDisplaySubject = new Subject<boolean>();
+    public tabIndexReloadSubject = new Subject<QueryList<TabIndexDirective>>();
 
-    
+
     public clearCalendarLoadStatus() {
         this.calendarLoadStatus = false;
     }
@@ -53,5 +54,9 @@ export class AppServeiceLoadStatusService {
 
     public setTabQueryList(tabs) {
         this.tabIndexList = tabs;
+    }
+
+    public updateTabQueryList(updatedIndex: QueryList<TabIndexDirective>) {
+        this.tabIndexReloadSubject.next(updatedIndex);
     }
 }
