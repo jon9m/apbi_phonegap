@@ -16,18 +16,27 @@ export class InspDtlFormCompletePopupComponent implements AfterViewInit, OnDestr
   adminMode: boolean = false;
   adminCompleted: boolean = false;
   private adminCompleteSubscription: Subscription;
+  private formValidSubscription: Subscription;
+  formValid: boolean = false;
 
   ngAfterViewInit(): void {
     this.adminCompleteSubscription = this.inspectionDetailsService.adminCompleteSubject.subscribe(status => {
       this.adminCompleted = status.isComplete;
-      // console.log(this.adminMode, this.adminCompleted);
     });
+
+    this.formValidSubscription = this.inspectionDetailsService.formValidSubject.subscribe(status => {
+      this.formValid = status.isValid;
+    });
+
     this.adminMode = this.inspectionDetailsService.getAdminMode();
   }
 
   ngOnDestroy(): void {
     if (this.adminCompleteSubscription != null) {
       this.adminCompleteSubscription.unsubscribe();
+    }
+    if (this.formValidSubscription != null) {
+      this.formValidSubscription.unsubscribe();
     }
   }
 

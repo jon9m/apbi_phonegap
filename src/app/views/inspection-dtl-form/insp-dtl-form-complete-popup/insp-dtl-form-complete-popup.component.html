@@ -1,35 +1,38 @@
 <div bsModal #completeModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-primary" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title">Complete Report</h4>
-          <button type="button" class="close" (click)="completeModal.hide()" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <p *ngIf="adminMode && adminCompleted; else completemsg">Enable form editing for inspector.</p>
-          <ng-template #completemsg>
+  <div class="modal-dialog modal-lg modal-primary" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Complete Report</h4>
+        <button type="button" class="close" (click)="completeModal.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p *ngIf="adminMode && adminCompleted; else completemsg">Enable form editing for inspector.</p>
+        <ng-template #completemsg>
+          <ng-template [ngIf]="!formValid">
             <p>Please double check the report prior to submitting to ensure it is fully completed.</p>
           </ng-template>
-        </div>
-        
-        <div class="modal-footer">
-          <ng-template [ngIf]="adminMode && adminCompleted" [ngIfElse]="completebtn">
-            <button type="button" class="btn btn-primary" (click)="enableEditForm()">Enable Editing For Inspector</button>
+          <ng-template [ngIf]="formValid">
+            <p>Continue completing the report?</p>
           </ng-template>
-          <ng-template #completebtn>
-            <button type="button" class="btn btn-primary" (click)="completeForm()">Complete Report</button>
-          </ng-template>
-          <button type="button" #completereportclosebutton class="btn btn-secondary" (click)="completeModal.hide()">Close</button>
-        </div>
-
+        </ng-template>
       </div>
-      <!-- /.modal-content -->
+      <div class="modal-footer">
+        <ng-template [ngIf]="adminMode && adminCompleted" [ngIfElse]="completebtn">
+          <button type="button" class="btn btn-primary" (click)="enableEditForm()">Enable Editing For Inspector</button>
+        </ng-template>
+        <ng-template #completebtn>
+          <button type="button" class="btn btn-primary" (click)="completeForm()" [disabled]=!formValid>Complete Report</button>
+        </ng-template>
+        <button type="button" #completereportclosebutton class="btn btn-secondary" (click)="completeModal.hide()">Close</button>
+      </div>
     </div>
-    <!-- /.modal-dialog -->
+    <!-- /.modal-content -->
   </div>
-  <!-- /.modal -->
-  <button id="completeReportWarningButton" style="display:none;" type="button" class="btn btn-secondary" data-toggle="modal" (click)="completeModal.show()">
-    m
-  </button>
+  <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+<button id="completeReportWarningButton" style="display:none;" type="button" class="btn btn-secondary" data-toggle="modal" (click)="completeModal.show()">
+  m
+</button>

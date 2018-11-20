@@ -11,6 +11,7 @@ import { FileUploadProgressService } from "../../shared/fileupload-progress.serv
 import { AppServeiceLoadStatusService } from '../../shared/app-service-load-status.service';
 import { TabIndexDirective } from '../../shared/TabIndexModule/tabItem.directive';
 import { AppUtils } from '../../shared/app-utils';
+import { CompleteFormDirective } from '../../shared/TabIndexModule/completeform.directive';
 
 @Component({
   selector: 'app-inspection-dtl-form',
@@ -104,6 +105,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
   adminCompleted: boolean = false;
 
   @ViewChildren(TabIndexDirective) tabs: QueryList<TabIndexDirective>;
+  @ViewChildren(CompleteFormDirective) sectionsToComplete: QueryList<CompleteFormDirective>;
 
   ngAfterViewInit(): void {
     this.appServeiceLoadStatusService.setTabQueryList(this.tabs);
@@ -3861,7 +3863,17 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
 
   //Complete Form
   onFormComplete() {
-    // console.log('onFormComplete');
+    this.inspectionDetailsService.setFormCompleteValid(true);
+
+    for (let item of this.sectionsToComplete.toArray()) {
+      if (item.getFormCompletionStatus() !== true) {
+        this.inspectionDetailsService.setFormCompleteValid(false);
+        break;
+      }
+    }
+
+    console.log("Form valid status " + this.inspectionDetailsService.getFormCompleteValid());
+
     let element: HTMLElement = document.getElementById('completeReportWarningButton') as HTMLElement;
     element.click();
   }

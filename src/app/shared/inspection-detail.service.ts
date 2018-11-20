@@ -12,17 +12,21 @@ export class InspectionDetailsService {
     public formCompleteSubject = new Subject<{ isComplete: boolean, onLoading: boolean }>();
     public adminCompleteSubject = new Subject<{ isComplete: boolean }>();
     public removeQuickRecommSubject = new Subject<{ doRemove: boolean }>();
+    public formValidSubject = new Subject<{ isValid: boolean }>();
+
 
     private isSaveAndExit: boolean;
     private isQuickSave: boolean;
     private adminMode: boolean;
     private adminCompleted: boolean;
+    private formCompleteValid: boolean;
 
     constructor() {
         this.isSaveAndExit = false;
         this.isQuickSave = false;
         this.adminCompleted = false;
         this.adminMode = false;
+        this.formCompleteValid = false;
 
         this.inspectionProperty = new InspectionProperty();
         this.inspectionDetails = new InspectionDetails();
@@ -100,5 +104,14 @@ export class InspectionDetailsService {
 
     public getAdminMode() {
         return this.adminMode;
+    }
+
+    public setFormCompleteValid(status) {
+        this.formValidSubject.next({ isValid: status });
+        this.formCompleteValid = status;
+    }
+
+    public getFormCompleteValid() {
+        return this.formCompleteValid;
     }
 }
