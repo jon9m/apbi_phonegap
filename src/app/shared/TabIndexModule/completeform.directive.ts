@@ -1,11 +1,11 @@
-import { Directive, Input, ElementRef, AfterViewInit } from "@angular/core";
+import { Directive, ElementRef, AfterViewInit, Renderer2 } from "@angular/core";
 
 @Directive({
     selector: '[completeform]'
 })
 export class CompleteFormDirective implements AfterViewInit {
 
-    constructor(public elem: ElementRef) { }
+    constructor(public elem: ElementRef, private renderer: Renderer2) { }
 
     ngAfterViewInit(): void {
     }
@@ -38,6 +38,17 @@ export class CompleteFormDirective implements AfterViewInit {
             }
         }
         // console.log('this.formCompleted ' + formCompleted);
+
+        if (!formCompleted) {
+            if (this.elem.nativeElement.parentNode && this.elem.nativeElement.parentNode.parentNode && this.elem.nativeElement.parentNode.parentNode.parentNode) {
+                this.renderer.setStyle(this.elem.nativeElement.parentNode.parentNode.parentNode, 'border', '2px solid #f86c6b');
+            }
+        } else {
+            if (this.elem.nativeElement.parentNode && this.elem.nativeElement.parentNode.parentNode && this.elem.nativeElement.parentNode.parentNode.parentNode) {
+                this.renderer.removeStyle(this.elem.nativeElement.parentNode.parentNode.parentNode, 'border');
+            }
+        }
+
         return formCompleted;
     }
 }
