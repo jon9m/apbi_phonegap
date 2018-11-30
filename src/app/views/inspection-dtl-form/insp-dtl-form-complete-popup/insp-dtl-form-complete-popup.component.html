@@ -11,7 +11,8 @@
         <p *ngIf="adminMode && adminCompleted; else completemsg">Enable form editing for inspector.</p>
         <ng-template #completemsg>
           <ng-template [ngIf]="!formValid">
-            <p>Form Incomplete! Please double check the report prior to submitting to ensure it is fully completed.</p>
+            <span style="color:#f86c6b;"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></span>
+            <span>Form Incomplete! Please double check the report prior to submitting to ensure it is fully completed.</span>
           </ng-template>
           <ng-template [ngIf]="formValid">
             <p>Continue completing the report?</p>
