@@ -3868,7 +3868,7 @@ export class InspectionDtlFormComponent implements OnInit, OnDestroy, AfterViewI
     for (let item of this.sectionsToComplete.toArray()) {
       if (item.getFormCompletionStatus() !== true) {
         this.inspectionDetailsService.setFormCompleteValid(false);
-        break;
+        // break;
       }
     }
 

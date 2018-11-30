@@ -702,6 +702,7 @@ input[type="checkbox"]:checked::after, .checkbox input[type="checkbox"]:checked:
 #resp-table {
 width: 100%;
 display: table;
+border-collapse: collapse;
 }
 #resp-table-caption{
 display: table-caption;
@@ -761,4 +762,8 @@ border-bottom: 1px solid black;
 
 .cardheaderbg{
 	background-color: #f0f3f5;
+}
+
+.forminvalidborder {
+	border: 2px solid rgb(248, 108, 107);
 }

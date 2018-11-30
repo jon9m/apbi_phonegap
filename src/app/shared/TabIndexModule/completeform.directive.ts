@@ -1,4 +1,4 @@
-import { Directive, ElementRef, AfterViewInit, Renderer2 } from "@angular/core";
+import { Directive, ElementRef, AfterViewInit, Renderer2, HostListener } from "@angular/core";
 
 @Directive({
     selector: '[completeform]'
@@ -8,6 +8,10 @@ export class CompleteFormDirective implements AfterViewInit {
     constructor(public elem: ElementRef, private renderer: Renderer2) { }
 
     ngAfterViewInit(): void {
+    }
+
+    @HostListener('click') clickItem() {
+        this.renderer.removeClass(this.elem.nativeElement, 'forminvalidborder');
     }
 
     getFormCompletionStatus = () => {
@@ -37,15 +41,14 @@ export class CompleteFormDirective implements AfterViewInit {
                 }
             }
         }
-        // console.log('this.formCompleted ' + formCompleted);
 
         if (!formCompleted) {
-            if (this.elem.nativeElement.parentNode && this.elem.nativeElement.parentNode.parentNode && this.elem.nativeElement.parentNode.parentNode.parentNode) {
-                this.renderer.setStyle(this.elem.nativeElement.parentNode.parentNode.parentNode, 'border', '2px solid #f86c6b');
+            if (this.elem.nativeElement) {
+                this.renderer.addClass(this.elem.nativeElement, 'forminvalidborder');
             }
         } else {
-            if (this.elem.nativeElement.parentNode && this.elem.nativeElement.parentNode.parentNode && this.elem.nativeElement.parentNode.parentNode.parentNode) {
-                this.renderer.removeStyle(this.elem.nativeElement.parentNode.parentNode.parentNode, 'border');
+            if (this.elem.nativeElement) {
+                this.renderer.removeClass(this.elem.nativeElement, 'forminvalidborder');
             }
         }
 
